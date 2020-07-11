@@ -1,4 +1,5 @@
-# Paradise
+# paradise
+q run.q
 ##### Spotify
 * Docs: https://developer.spotify.com/documentation/web-api/
 * IDs available at: https://developer.spotify.com/dashboard/login
