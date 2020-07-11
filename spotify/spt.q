@@ -10,7 +10,7 @@ cfg.codes:`s#(!). flip(
 	(204;{"Success"});
 	(205;{'"205+ Response"});
 	(300;{'"300 Error"});
-	(400;{$["J"$(h:.utl.http.parseResponseHeaders x)`ContentLength;.utl.http.jk[x][`error;`message];h`response]});
+	(400;{$["J"$(h:.utl.http.parseResponseHeaders x)`ContentLength;.utl.http.jk[x][`error;`message];(1+h?" ")_h:h`response]});
 	(500;{.utl.http.jk[x][`error;`message]})
 	)
 
