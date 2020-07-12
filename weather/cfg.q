@@ -1,9 +1,9 @@
 oc.cfg:(!). flip(
-        (`key;"");
+	(`key;"");
 	(`url;`:https://api.opencagedata.com)
 	)
 
 ds.cfg:(!). flip(
-        (`key;"");
+	(`key;"")
 	(`url;`:https://api.darksky.net)
         )

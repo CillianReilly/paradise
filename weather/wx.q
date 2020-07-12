@@ -21,13 +21,13 @@ utl.getWx:{
 
 //HTTP response actions to be filled in as encountered
 utl.codes:`s#(!). flip(
-        (100;{'"100 Error"});
-        (200;.utl.http.jk);
-        (204;{'"204 Error"});
-        (300;{'"300 Error"});
-        (400;{(1+r?" ")_r:.utl.http.parseResponseHeaders[x]`response});
+	(100;{'"100 Error"});
+	(200;.utl.http.jk);
+	(204;{'"204 Error"});
+	(300;{'"300 Error"});
+	(400;{(1+r?" ")_r:.utl.http.parseResponseHeaders[x]`response});
 	(402;{'"402 Error"});
-        (500;{'"500 Error"})
-        )
+	(500;{'"500 Error"})
+	)
 
 \d .
