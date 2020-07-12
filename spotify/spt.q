@@ -1,5 +1,3 @@
-//q script containing API routines for spotify
-
 \d .spt
 \l spotify/cfg.q
 
@@ -38,7 +36,7 @@ get.playing:{[]
         }
 
 
-// POST Queries
+// POST Requests
 pst.req:{utl.parseResponse pst.sendReq x}
 pst.sendReq:{[ep]
 	cfg.url"POST ",ep," HTTP/1.0\r\nHost: ",(9_string cfg.url),"\r\nAccept: application/json\r\nContent-Type: application/json\r\nContent-Length: 0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"
@@ -60,12 +58,13 @@ pst.getToken:{[]
 	r`access_token
 	}
 
+pst.queue:{pst.req"/v1/me/player/queue?uri=",x}
 pst.next:{r:pst.req"/v1/me/player/next";if[not r~"Success";:r];system"sleep 1";get.playing[]}
 pst.prev:{r:pst.req"/v1/me/player/previous";if[not r~"Success";:r];system"sleep 1";get.playing[]}
 pst.addToPlaylist:{r:pst.req2["/v1/playlists/",x,"/tracks";enlist[`uris]!2 enlist/y];$[99=type r;"Success";r]}
 
 
-// PUT Queries
+// PUT Requests
 put.req:{utl.parseResponse put.sendReq x}
 put.sendReq:{[ep]
 	cfg.url"PUT ",(1_string[cfg.url],ep)," HTTP/1.0\r\nHost: ",(9_string cfg.url),"\r\nAccept: application/json\r\nContent-Type: application/json\r\nContent-Length: 0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"
