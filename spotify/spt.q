@@ -80,7 +80,7 @@ put.sendReq2:{[ep;req]
 put.pause:{put.req"/v1/me/player/pause"}
 put.resume:{put.req"/v1/me/player/play"}
 put.vol:{put.req"/v1/me/player/volume?volume_percent=",$[10=abs type x;x;string x]}
-put.shuffle:{put.req"/v1/me/player/shuffle?state=",$[x~(::);("false";"true")not get.info[]`shuffle_state;-1h=type x;("false";"true")x;x]}
+put.shuffle:{put.req"/v1/me/player/shuffle?state=",("false";"true")$[-1h=type x;x;x in("true";"on");1b;x in("false";"off");0b;not get.info[]`shuffle_state]}
 put.repeat:{put.req"/v1/me/player/repeat?state=",x}
 put.transfer:{put.req2["/v1/me/player";enlist[`device_ids]!2 enlist/x]}
 put.seek:{put.req"/v1/me/player/seek?position_ms=",string 1000*$[10=abs type x;"J"$x;x]}
