@@ -13,11 +13,7 @@ oc.getGeo:{r:oc.req["+"^x];if[10=type r;:r];exec first geometry from`confidence 
 //Weather utilities
 utl.F2C:{7h$(5%9)*x-32}
 utl.parseResponse:{utl.codes[.utl.http.parseResponseCode x]x}
-utl.getWx:{
-	r:oc.getGeo x;
-	if[10=type r;:r];
-	r:ds.req[r]`currently;
-	"Currently ",lower[r`summary]," and temperatures of ",string[.wx.utl.F2C r`temperature]," degrees."}
+utl.getWx:{r:oc.getGeo x;if[10=type r;:r];ds.req r}
 
 //HTTP response actions to be filled in as encountered
 utl.codes:`s#(!). flip(
