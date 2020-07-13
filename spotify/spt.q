@@ -26,6 +26,7 @@ get.req:{utl.parseResponse get.sendReq x}
 get.sendReq:{[ep]cfg.url"GET ",(1_string[cfg.url],ep)," HTTP/1.0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"}
 
 get.devices:{r:get.req"/v1/me/player/devices";$[10=type r;r;r`devices]}
+get.playing:{get.req"/v1/me/player/currently-playing"}
 get.info:{get.req"/v1/me/player"}
 get.recent:{get.req"/v1/me/player/recently-played"}
 get.me:{get.req"/v1/me"}
@@ -34,12 +35,6 @@ get.followedArtists:{r:get.req"/v1/me/following?type=artist";$[10=type r;r;r`art
 get.artistDetails:{get.req"/v1/artists/","/"sv(x;y)}
 get.top:{get.req"/v1/me/top/",x}	// 1st param is "tracks" or "artists", also accepts artists?time_range=long_term&limit=30 etc
 get.search:{r:get.req"/v1/search?q=",("+"^x),"&type=","+"^y;$[10=type r;r;r[`$y,"s";`items]]}	// 1st param is query, 2nd is album, playlist, artist, ot track
-
-get.playing:{[]
-        r:get.req"/v1/me/player/currently-playing";
-        if[10=type r;:r];
-        "Playing ",r[`item;`name]," by ",first r[`item;`artists;`name]
-        }
 
 
 // POST Requests
@@ -65,8 +60,8 @@ pst.getToken:{[]
 	}
 
 pst.queue:{pst.req"/v1/me/player/queue?uri=",x}
-pst.next:{r:pst.req"/v1/me/player/next";if[not r~"Success";:r];system"sleep 1";get.playing[]}
-pst.prev:{r:pst.req"/v1/me/player/previous";if[not r~"Success";:r];system"sleep 1";get.playing[]}
+pst.next:{pst.req"/v1/me/player/next"}
+pst.prev:{pst.req"/v1/me/player/previous"}
 pst.addToPlaylist:{r:pst.req2["/v1/playlists/",x,"/tracks";enlist[`uris]!2 enlist/y];$[99=type r;"Success";r]}
 
 
@@ -94,10 +89,8 @@ put.rand:{
 	r:get.top $[x~"tracks";x;"artists"],"?time_range=",rand[("short";"medium";"long")],"_term&limit=50";
 	if[10=type r;:r];
 	uri:rand r[`items;`uri];
-	r:put.play[uri;0];if[not"Success"~r;:r];
-	system"sleep 1";
-	get.playing[]
-        }
+	put.play[uri;0]
+	}
 
 //Offset is position to play from i.e. track number (starts from 0)
 put.play:{[uri;offset]
