@@ -13,21 +13,17 @@ oc.getGeo:{r:oc.req["+"^x];if[10=type r;:r];exec first geometry from`confidence 
 //Weather utilities
 utl.F2C:{7h$(5%9)*x-32}
 utl.parseResponse:{utl.codes[.utl.http.parseResponseCode x]x}
-utl.getWx:{
-	r:oc.getGeo x;
-	if[10=type r;:r];
-	r:ds.req[r]`currently;
-	"Currently ",lower[r`summary]," and temperatures of ",string[.wx.utl.F2C r`temperature]," degrees."}
+utl.getWx:{r:oc.getGeo x;if[10=type r;:r];ds.req r}
 
 //HTTP response actions to be filled in as encountered
 utl.codes:`s#(!). flip(
-	(100;{'"100 Error"});
-	(200;.utl.http.jk);
-	(204;{'"204 Error"});
-	(300;{'"300 Error"});
-	(400;{(1+r?" ")_r:.utl.http.parseResponseHeaders[x]`response});
+        (100;{'"100 Error"});
+        (200;.utl.http.jk);
+        (204;{'"204 Error"});
+        (300;{'"300 Error"});
+        (400;{(1+r?" ")_r:.utl.http.parseResponseHeaders[x]`response});
 	(402;{'"402 Error"});
-	(500;{'"500 Error"})
-	)
+        (500;{'"500 Error"})
+        )
 
 \d .
