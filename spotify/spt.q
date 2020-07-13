@@ -12,8 +12,16 @@ cfg.codes:`s#(!). flip(
 	(500;{.utl.http.jk[x][`error;`message]})
 	)
 
+// DELETE Requests
+del.req2:{utl.parseResponse del.sendReq2[x;y]}
+del.sendReq2:{[ep;req]
+	cfg.url"DELETE ",(1_string[cfg.url],ep)," HTTP/1.0\r\nHost: ",(9_string cfg.url),"\r\nAccept: application/json\r\nContent-Type: application/json\r\nAuthorization: Bearer ",cfg.accessToken,"\r\nContent-Length: ",string[count r],"\r\n\r\n",(r:.j.j req),"\r\n\r\n"
+	}
 
-// GET requests
+del.deleteFromPlaylist:{r:del.req2["/v1/playlists/",x,"/tracks";enlist[`uris]!2 enlist/y];$[99=type r;"Success";r]}
+
+
+// GET Requests
 get.req:{utl.parseResponse get.sendReq x}
 get.sendReq:{[ep]cfg.url"GET ",(1_string[cfg.url],ep)," HTTP/1.0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"}
 
