@@ -15,9 +15,7 @@ cfg.codes:`s#(!). flip(
 
 // GET requests
 get.req:{utl.parseResponse get.sendReq x}
-get.sendReq:{[ep]
-	cfg.url"GET ",(1_string[cfg.url],ep)," HTTP/1.0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"
-	}
+get.sendReq:{[ep]cfg.url"GET ",(1_string[cfg.url],ep)," HTTP/1.0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"}
 
 get.devices:{r:get.req"/v1/me/player/devices";$[10=type r;r;r`devices]}
 get.info:{get.req"/v1/me/player"}
@@ -84,13 +82,12 @@ put.transfer:{put.req2["/v1/me/player";enlist[`device_ids]!2 enlist/x]}
 put.seek:{put.req"/v1/me/player/seek?position_ms=",string 1000*$[10=abs type x;"J"$x;x]}
 
 put.rand:{
-	if[not sum get.devices[]`is_active;:"No active device found"];
-	put.shuffle rand("true";"false");
-	//Default to artist to continue playing after selection and randomise time range
+	r:put.shuffle rand 0b;if[not"Success"~r;:r];
 	r:get.top $[x~"tracks";x;"artists"],"?time_range=",rand[("short";"medium";"long")],"_term&limit=50";
 	if[10=type r;:r];
 	uri:rand r[`items;`uri];
-	put.play[uri;0];system"sleep 1";
+	r:put.play[uri;0];if[not"Success"~r;:r];
+	system"sleep 1";
 	get.playing[]
         }
 
