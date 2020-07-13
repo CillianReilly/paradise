@@ -18,7 +18,7 @@ del.sendReq2:{[ep;req]
 	cfg.url"DELETE ",(1_string[cfg.url],ep)," HTTP/1.0\r\nHost: ",(9_string cfg.url),"\r\nAccept: application/json\r\nContent-Type: application/json\r\nAuthorization: Bearer ",cfg.accessToken,"\r\nContent-Length: ",string[count r],"\r\n\r\n",(r:.j.j req),"\r\n\r\n"
 	}
 
-del.deleteFromPlaylist:{r:del.req2["/v1/playlists/",x,"/tracks";enlist[`uris]!2 enlist/y];$[99=type r;"Success";r]}
+del.deleteFromPlaylist:{r:del.req2["/v1/playlists/",x,"/tracks";enlist[`uris]!2 enlist/y]}
 
 
 // GET Requests
@@ -62,7 +62,8 @@ pst.getToken:{[]
 pst.queue:{pst.req"/v1/me/player/queue?uri=",x}
 pst.next:{pst.req"/v1/me/player/next"}
 pst.prev:{pst.req"/v1/me/player/previous"}
-pst.addToPlaylist:{r:pst.req2["/v1/playlists/",x,"/tracks";enlist[`uris]!2 enlist/y];$[99=type r;"Success";r]}
+pst.createPlaylist:{r:st.req2["/v1/users/",cfg.userID,"/playlists";enlist[`name]!enlist x]}
+pst.addToPlaylist:{r:pst.req2["/v1/playlists/",x,"/tracks";enlist[`uris]!2 enlist/y]}
 
 
 // PUT Requests
