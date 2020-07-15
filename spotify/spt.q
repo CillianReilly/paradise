@@ -63,7 +63,7 @@ pst.queue:{pst.req"/v1/me/player/queue?uri=",x}
 pst.next:{pst.req"/v1/me/player/next"}
 pst.prev:{pst.req"/v1/me/player/previous"}
 pst.addToPlaylist:{pst.req2["/v1/playlists/",x,"/tracks";enlist[`uris]!2 enlist/y]}
-pst.createPlaylist:{st.req2["/v1/users/",cfg.userID,"/playlists";enlist[`name]!enlist x]}
+pst.createPlaylist:{pst.req2["/v1/users/",cfg.userID,"/playlists";enlist[`name]!enlist x]}
 
 
 // PUT Requests
