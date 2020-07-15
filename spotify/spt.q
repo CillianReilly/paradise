@@ -108,8 +108,9 @@ put.playJamesBlunt:{put.play["spotify:artist:7KMqksf0UMdyA0UCf4R3ux";0]}
 utl.parseResponse:{cfg.codes[.utl.http.parseResponseCode x]x}
 utl.checkToken:{if[.z.p>00:59+cfg.accessTime;cfg.accessToken:pst.getToken[]]}
 utl.getUri:{
-	r:`popularity xdesc get.search[x;y];
+	r:get.search[x;y];
 	if[10=type r;:r];
+	r:$[`popularity in cols r;`popularity xdesc r;r];
 	first $[not y~"track";
 		select uri,offset:0 from r;
 		select uri:album[;`uri],offset:7h$track_number-1,turi:uri from r]
