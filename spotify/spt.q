@@ -115,8 +115,7 @@ utl.getUri:{
 		select uri:album[;`uri],offset:7h$track_number-1,turi:uri from r]
 	}
 
-
-// Get and store access token on init
+// Init
 cfg.accessToken:@[pst.getToken;[];{-1"Error getting access token: ",x,"\nHave the relevant IDs been configured?";exit 1}]
 
 $[not count get.devices[];
@@ -126,7 +125,3 @@ $[not count get.devices[];
         -1"Initialised Spotify successfully, playing on ",": "sv(exec from get.devices[]where is_active)`type`name];
 
 \d .
-
-.z.ts:.spt.utl.checkToken
-system"t 60000"
-system"S ",string 7h$.z.t
