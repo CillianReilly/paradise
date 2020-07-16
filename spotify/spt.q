@@ -42,7 +42,7 @@ get.search:{r:get.req"/v1/search?q=",("+"^x),"&type=","+"^y;$[10=type r;r;r[`$y,
 pst.req:{utl.parseResponse pst.sendReq x}
 pst.sendReq:{[ep]
 	cfg.url"POST ",ep," HTTP/1.0\r\nHost: ",(9_string cfg.url),"\r\nAccept: application/json\r\nContent-Type: application/json\r\nContent-Length: 0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"
-        }
+	}
 
 pst.req2:{utl.parseResponse pst.sendReq2[x;y]}
 pst.sendReq2:{[ep;req]
@@ -50,8 +50,8 @@ pst.sendReq2:{[ep;req]
 	}
 
 pst.sendTokenReq:{
-        cfg.tokenUrl"POST /api/token HTTP/1.0\r\nHost: ",(9_string cfg.tokenUrl),"\r\nAuthorization: Basic ",cfg.auth64,"\r\nContent-Length: 170\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\ngrant_type=refresh_token&refresh_token=",cfg.refreshToken,"\r\n\r\n"
-        }
+	cfg.tokenUrl"POST /api/token HTTP/1.0\r\nHost: ",(9_string cfg.tokenUrl),"\r\nAuthorization: Basic ",cfg.auth64,"\r\nContent-Length: 170\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\ngrant_type=refresh_token&refresh_token=",cfg.refreshToken,"\r\n\r\n"
+	}
 
 pst.getToken:{[]
 	r:utl.parseResponse pst.sendTokenReq[];
@@ -75,8 +75,8 @@ put.sendReq:{[ep]
 
 put.req2:{utl.parseResponse put.sendReq2[x;y]}
 put.sendReq2:{[ep;req]
-        cfg.url"PUT ",(1_string[cfg.url],ep)," HTTP/1.0\r\nHost: ",(9_string cfg.url),"\r\nAccept: application/json\r\nContent-Type: application/json\r\nAuthorization: Bearer ",cfg.accessToken,"\r\nContent-Length: ",string[count r],"\r\n\r\n",(r:.j.j req),"\r\n\r\n"
-        }
+	cfg.url"PUT ",(1_string[cfg.url],ep)," HTTP/1.0\r\nHost: ",(9_string cfg.url),"\r\nAccept: application/json\r\nContent-Type: application/json\r\nAuthorization: Bearer ",cfg.accessToken,"\r\nContent-Length: ",string[count r],"\r\n\r\n",(r:.j.j req),"\r\n\r\n"
+	}
 
 put.pause:{put.req"/v1/me/player/pause"}
 put.resume:{put.req"/v1/me/player/play"}
@@ -99,10 +99,10 @@ put.rand:{
 
 //Offset is position to play from i.e. track number (starts from 0)
 put.play:{[uri;offset]
-        t:(":"vs uri)1;
-        req:($[t~"track";`uris;`context_uri],$[t in("playlist";"album");`offset;()])#`context_uri`uris`offset!(uri;enlist uri;enlist[`position]!enlist offset);
-        put.req2["/v1/me/player/play";req]
-        }
+	t:(":"vs uri)1;
+	req:($[t~"track";`uris;`context_uri],$[t in("playlist";"album");`offset;()])#`context_uri`uris`offset!(uri;enlist uri;enlist[`position]!enlist offset);
+	put.req2["/v1/me/player/play";req]
+	}
 
 
 //Spotify specific utilities
@@ -110,10 +110,10 @@ utl.parseResponse:{cfg.codes[.utl.http.parseResponseCode x]x}
 utl.checkToken:{if[.z.p>00:59+cfg.accessTime;cfg.accessToken:pst.getToken[]]}
 utl.getPlaylistUri:{r:get.playlists[];if[10=type r;:r];exec first uri from r[`items]where name like x}
 utl.getRadioID:{
-        r:utl.getPlaylistUri"radio";if[10=type r;:r];
-        r:pst.createPlaylist"radio";if[10=type r;:r];
-        r`id
-        }
+	r:utl.getPlaylistUri"radio";if[10=type r;:r];
+	r:pst.createPlaylist"radio";if[10=type r;:r];
+	r`id
+	}
 utl.getUri:{
 	r:get.search[x;y];
 	if[10=type r;:r];
@@ -147,9 +147,9 @@ utl.play:{
 cfg.accessToken:@[pst.getToken;[];{-1"Error getting access token: ",x,"\nHave the relevant IDs been configured?";exit 1}]
 
 $[not count get.devices[];
-        -1"No devices found";
+	-1"No devices found";
   not sum get.devices[]`is_active;
-        -1"No active devices found";
-        -1"Initialised Spotify successfully, playing on ",": "sv(exec from get.devices[]where is_active)`type`name];
+	-1"No active devices found";
+	-1"Initialised Spotify successfully, playing on ",": "sv(exec from get.devices[]where is_active)`type`name];
 
 \d .
