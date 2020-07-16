@@ -18,7 +18,7 @@ del.sendReq2:{[ep;req]
 	cfg.url"DELETE ",(1_string[cfg.url],ep)," HTTP/1.0\r\nHost: ",(9_string cfg.url),"\r\nAccept: application/json\r\nContent-Type: application/json\r\nAuthorization: Bearer ",cfg.accessToken,"\r\nContent-Length: ",string[count r],"\r\n\r\n",(r:.j.j req),"\r\n\r\n"
 	}
 
-del.deleteFromPlaylist:{r:del.req2["/v1/playlists/",x,"/tracks";enlist[`uris]!2 enlist/y]}
+del.deleteFromPlaylist:{del.req2["/v1/playlists/",x,"/tracks";]enlist[`uris]!(1|type[y]div 5)enlist/y}
 
 
 // GET Requests
@@ -62,7 +62,7 @@ pst.getToken:{[]
 pst.queue:{pst.req"/v1/me/player/queue?uri=",x}
 pst.next:{pst.req"/v1/me/player/next"}
 pst.prev:{pst.req"/v1/me/player/previous"}
-pst.addToPlaylist:{pst.req2["/v1/playlists/",x,"/tracks";enlist[`uris]!2 enlist/y]}
+pst.addToPlaylist:{pst.req2["/v1/playlists/",x,"/tracks";]enlist[`uris]!(1|type[y]div 5)enlist/y}
 pst.createPlaylist:{pst.req2["/v1/users/",cfg.userID,"/playlists";enlist[`name]!enlist x]}
 
 
@@ -84,6 +84,9 @@ put.shuffle:{put.req"/v1/me/player/shuffle?state=",("false";"true")$[-1h=type x;
 put.repeat:{put.req"/v1/me/player/repeat?state=",x}
 put.transfer:{put.req2["/v1/me/player";enlist[`device_ids]!2 enlist/x]}
 put.seek:{put.req"/v1/me/player/seek?position_ms=",string 1000*$[10=abs type x;"J"$x;x]}
+put.playPhilCollins:{put.play["spotify:artist:4lxfqrEsLX6N1N4OCSkILp";0]}
+put.playJamesBlunt:{put.play["spotify:artist:7KMqksf0UMdyA0UCf4R3ux";0]}
+put.replacePlaylist:{put.req2["/v1/playlists/",x,"/tracks";]enlist[`uris]!(1|type[y]div 5)enlist/y}
 
 put.rand:{
 	r:put.shuffle rand 0b;if[not"Success"~r;:r];
@@ -99,9 +102,6 @@ put.play:{[uri;offset]
         req:($[t~"track";`uris;`context_uri],$[t in("playlist";"album");`offset;()])#`context_uri`uris`offset!(uri;enlist uri;enlist[`position]!enlist offset);
         put.req2["/v1/me/player/play";req]
         }
-
-put.playPhilCollins:{put.play["spotify:artist:4lxfqrEsLX6N1N4OCSkILp";0]}
-put.playJamesBlunt:{put.play["spotify:artist:7KMqksf0UMdyA0UCf4R3ux";0]}
 
 
 //Spotify specific utilities
