@@ -115,8 +115,7 @@ utl.getRadioID:{
 	r`id
 	}
 utl.getUri:{
-	r:get.search[x;y];
-	if[10=type r;:r];
+	r:get.search[x;y];if[10=type r;:r];if[()~r;:"No search results"];
 	r:$[`popularity in cols r;`popularity xdesc r;r];
 	first $[not y~"track";
 		select uri,offset:0 from r;
