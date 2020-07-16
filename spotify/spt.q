@@ -31,6 +31,7 @@ get.info:{get.req"/v1/me/player"}
 get.recent:{get.req"/v1/me/player/recently-played"}
 get.me:{get.req"/v1/me"}
 get.playlists:{get.req"/v1/me/playlists"}
+get.recommendations:{get.req"/v1/recommendations?",x}
 get.followedArtists:{r:get.req"/v1/me/following?type=artist";$[10=type r;r;r`artists]}
 get.artistDetails:{get.req"/v1/artists/","/"sv(x;y)}
 get.top:{get.req"/v1/me/top/",x}	// 1st param is "tracks" or "artists", also accepts artists?time_range=long_term&limit=30 etc
@@ -103,10 +104,27 @@ put.play:{[uri;offset]
         put.req2["/v1/me/player/play";req]
         }
 
+put.radio:{
+	r:utl.getUri[x;y];if[10=type r;:r];
+	p:("seed_artists";"seed_tracks")!last each":"vs/:r`uri`turi;
+	p:.utl.http.genParameters @[p;"limit";:;"100"];
+	r:get.recommendations p;if[10=type r;:r];
+	u:exec uri from`popularity xdesc r`tracks;
+	rid:utl.getRadioID"radio";if[not rid like"sp*";:rid];
+	r:put.replacePlaylist[last":"vs rid;u];if[10=type r;:r];system"sleep 1";
+	put.play[rid;0]
+	}
+
 
 //Spotify specific utilities
 utl.parseResponse:{cfg.codes[.utl.http.parseResponseCode x]x}
 utl.checkToken:{if[.z.p>00:59+cfg.accessTime;cfg.accessToken:pst.getToken[]]}
+utl.getPlaylistUri:{r:get.playlists[];if[10=type r;:r];exec first uri from r[`items]where name like x}
+utl.getRadioID:{
+        r:utl.getPlaylistUri"radio";if[10=type r;:r];
+        r:pst.createPlaylist["radio"];if[10=type r;:r];
+        r`id
+        }
 utl.getUri:{
 	r:get.search[x;y];
 	if[10=type r;:r];
