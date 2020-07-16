@@ -104,17 +104,6 @@ put.play:{[uri;offset]
         put.req2["/v1/me/player/play";req]
         }
 
-put.radio:{
-	r:utl.getUri[x;y];if[10=type r;:r];
-	p:("seed_artists";"seed_tracks")!last each":"vs/:r`uri`turi;
-	p:.utl.http.genParameters @[p;"limit";:;"100"];
-	r:get.recommendations p;if[10=type r;:r];
-	u:exec uri from`popularity xdesc r`tracks;
-	rid:utl.getRadioID"radio";if[not rid like"sp*";:rid];
-	r:put.replacePlaylist[last":"vs rid;u];if[10=type r;:r];system"sleep 1";
-	put.play[rid;0]
-	}
-
 
 //Spotify specific utilities
 utl.parseResponse:{cfg.codes[.utl.http.parseResponseCode x]x}
@@ -122,7 +111,7 @@ utl.checkToken:{if[.z.p>00:59+cfg.accessTime;cfg.accessToken:pst.getToken[]]}
 utl.getPlaylistUri:{r:get.playlists[];if[10=type r;:r];exec first uri from r[`items]where name like x}
 utl.getRadioID:{
         r:utl.getPlaylistUri"radio";if[10=type r;:r];
-        r:pst.createPlaylist["radio"];if[10=type r;:r];
+        r:pst.createPlaylist"radio";if[10=type r;:r];
         r`id
         }
 utl.getUri:{
@@ -132,6 +121,26 @@ utl.getUri:{
 	first $[not y~"track";
 		select uri,offset:0 from r;
 		select uri:album[;`uri],offset:7h$track_number-1,turi:uri from r]
+	}
+utl.radio:{
+	r:utl.getUri[x;y];if[10=type r;:r];
+	p:("seed_artists";"seed_tracks")!last each":"vs/:r`uri`turi;
+	p:.utl.http.genParameters @[p;"limit";:;"100"];
+	r:get.recommendations p;if[10=type r;:r];
+	u:exec uri from`popularity xdesc r`tracks;
+	rid:utl.getRadioID"radio";if[not rid like"sp*";:rid];
+	r:put.replacePlaylist[last":"vs rid;u];if[10=type r;:r];system"sleep 1";
+	put.play[rid;0]
+	}
+utl.queue:{
+	r:utl.getUri[x;"track"];
+	if[10=type r;:r];if[()~first r;:"Couldn't get uri"];
+	pst.queue r`turi
+	}
+utl.play:{
+	r:utl.getUri[x;y];
+	if[10=type r;:r];if[()~first r;:"Couldn't get uri"];
+	put.play . r`uri`offset
 	}
 
 // Init
