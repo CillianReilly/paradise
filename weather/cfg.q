@@ -4,6 +4,6 @@ oc.cfg:(!). flip(
 	)
 
 ds.cfg:(!). flip(
-	(`key;"")
+	(`key;"");
 	(`url;`:https://api.darksky.net)
 	)

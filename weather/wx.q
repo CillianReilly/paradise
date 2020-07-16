@@ -1,6 +1,6 @@
 \d .wx
 \l weather/cfg.q
-        
+
 //DarkSky
 ds.req:{utl.parseResponse ds.sendReq x}
 ds.sendReq:{ds.cfg.url"GET /forecast/",ds.cfg.key,"/",(","sv string x`lat`lng)," HTTP/1.1\r\nHost: ",(9_string ds.cfg.url),"\r\n\r\n"}
