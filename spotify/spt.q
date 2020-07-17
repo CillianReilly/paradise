@@ -31,6 +31,7 @@ get.info:{get.req"/v1/me/player"}
 get.recent:{get.req"/v1/me/player/recently-played"}
 get.me:{get.req"/v1/me"}
 get.playlists:{get.req"/v1/me/playlists"}
+get.playlistTracks:{get.req"/v1/playlists/",x,"/tracks"}
 get.recommendations:{get.req"/v1/recommendations?",x}
 get.followedArtists:{r:get.req"/v1/me/following?type=artist";$[10=type r;r;r`artists]}
 get.artistDetails:{get.req"/v1/artists/","/"sv(x;y)}
