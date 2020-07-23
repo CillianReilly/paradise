@@ -146,10 +146,13 @@ utl.play:{
 // Init
 cfg.accessToken:@[pst.getToken;[];{-1"Error getting access token: ",x,"\nHave the relevant IDs been configured?";exit 1}]
 
-$[not count get.devices[];
-	-1"No devices found";
-  not sum get.devices[]`is_active;
-	-1"No active devices found";
-	-1"Initialised Spotify successfully, playing on ",": "sv(exec from get.devices[]where is_active)`type`name];
+
+s:$[not count get.devices[];
+	"no devices found";
+    not sum get.devices[]`is_active;
+	"no active devices found";
+	"playing on ",": "sv(exec from get.devices[]where is_active)`type`name]
+
+-1"Initialised Spotify successfully, ",s;
 
 \d .
