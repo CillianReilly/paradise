@@ -25,6 +25,7 @@ del.deleteFromPlaylist:{del.req2["/v1/playlists/",x,"/tracks";]enlist[`uris]!(1|
 get.req:{utl.parseResponse get.sendReq x}
 get.sendReq:{[ep]cfg.url"GET ",(1_string[cfg.url],ep)," HTTP/1.0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"}
 
+get.vol:{get.info[][`device;`volume_percent]}
 get.devices:{r:get.req"/v1/me/player/devices";$[10=type r;r;r`devices]}
 get.playing:{get.req"/v1/me/player/currently-playing"}
 get.info:{get.req"/v1/me/player"}
@@ -145,7 +146,6 @@ utl.play:{
 
 // Init
 cfg.accessToken:@[pst.getToken;[];{-1"Error getting access token: ",x,"\nHave the relevant IDs been configured?";exit 1}]
-
 
 s:$[not count get.devices[];
 	"no devices found";
