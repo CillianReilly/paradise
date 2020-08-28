@@ -4,6 +4,7 @@ Non-interactive:./run.sh
 ##### Requirements
 * kdb+ 3.5+
 * Python 3.5+ 
+* embedPy
 * os, gtts and speech_recognition Python libraries
 ##### Spotify
 * Docs: https://developer.spotify.com/documentation/web-api/
