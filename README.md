@@ -2,7 +2,7 @@
 * Interactive:		q run.q
 * Non-interactive:	./run.sh
 ##### Requirements
-* kdb+ 3.5+ https://code.kx.com/q/
+* kdb+ 3.5+ https://code.kx.com/q
 * Python 3.5+ https://www.python.org
 * embedPy: https://code.kx.com/q/ml/embedpy
 * gTTS https://pypi.org/project/gTTS
