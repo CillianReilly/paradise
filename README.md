@@ -1,11 +1,12 @@
 # paradise
-Interactive:	q run.q
-Non-interactive:./run.sh
+* Interactive:		q run.q
+* Non-interactive:	./run.sh
 ##### Requirements
-* kdb+ 3.5+
-* Python 3.5+ 
-* embedPy
-* os, gtts and speech_recognition Python libraries
+* kdb+ 3.5+ https://code.kx.com/q/
+* Python 3.5+ https://www.python.org
+* embedPy: https://code.kx.com/q/ml/embedpy
+* gTTS https://pypi.org/project/gTTS
+* SpeechRecognition https://pypi.org/project/SpeechRecognition 
 ##### Spotify
 * Docs: https://developer.spotify.com/documentation/web-api/
 * IDs available at: https://developer.spotify.com/dashboard/login
