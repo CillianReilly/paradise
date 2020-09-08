@@ -1,23 +1,23 @@
 \d .nlp
 
 cfg.cmd:(!). flip(
-        ("pause";`.spt.put.pause);
-        ("resume";`.spt.put.resume);
-        ("devices";`.nlp.spt.devices);
-        ("volume";`.nlp.spt.vol);
-        ("random";`.nlp.spt.rand);
-        ("surprise";`.nlp.spt.rand);
-        ("next";`.nlp.spt.next);
-        ("previous";`.nlp.spt.prev);
-        ("play";`.nlp.spt.play);
-        ("restart";`.nlp.spt.restart);
-        ("transfer";`.nlp.spt.transfer);
-        ("playing";`.nlp.spt.playing);
-        ("shuffle";`.nlp.spt.shuffle);
-        ("queue";`.nlp.spt.queue);
-        ("radio";`.nlp.spt.radio);
-        ("weather";`.nlp.wx.getWx)
-        )
+	("pause";`.spt.put.pause);
+	("resume";`.spt.put.resume);
+	("devices";`.nlp.spt.devices);
+	("volume";`.nlp.spt.vol);
+	("random";`.nlp.spt.rand);
+	("surprise";`.nlp.spt.rand);
+	("next";`.nlp.spt.next);
+	("previous";`.nlp.spt.prev);
+	("play";`.nlp.spt.play);
+	("restart";`.nlp.spt.restart);
+	("transfer";`.nlp.spt.transfer);
+	("playing";`.nlp.spt.playing);
+	("shuffle";`.nlp.spt.shuffle);
+	("queue";`.nlp.spt.queue);
+	("radio";`.nlp.spt.radio);
+	("weather";`.nlp.wx.getWx)
+	)
 
 wrap:{$[count x ss" and ";
 		.z.s each" and "vs x;
@@ -77,15 +77,14 @@ spt.play:{
 
 spt.devices:{
         r:.spt.get.devices[];if[10=type r;:r];
-        $[c:count r;
-                "Device",$[1=c;"";"s"]," ",(","sv r`type)," ",$[1=c;"is";"are"]," currently available";
-                "No devices currently available"]
+        if[not c:count r;:"No devices currently available"];
+        "Device",$[1=c;"";"s"]," ",(","sv r`type)," ",$[1=c;"is";"are"]," currently available"
         }
 
 wx.getWx:{
         r:.wx.utl.getWx raze(2+x?"in")_x;if[10=type r;:r];
         c:r`currently;h:r`hourly;
         "Currently ",ssr[lower c`summary;" and ";", "]," and temperatures of ",string[.wx.utl.F2C c`temperature]," degrees. The forecast is ",(-1_h`summary),", temperatures between ",(" and "sv string .wx.utl.F2C(min;max)@\:h[`data;;`temperature])," degrees."
-        }
+	}
 
 \d .
