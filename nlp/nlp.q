@@ -16,15 +16,17 @@ cfg.cmd:(!). flip(
 	("shuffle";`.nlp.spt.shuffle);
 	("queue";`.nlp.spt.queue);
 	("radio";`.nlp.spt.radio);
-	("weather";`.nlp.wx.getWx)
+	("weather";(!). flip(
+			("now";`.nlp.wx.getWx);
+			("today";`.nlp.wx.getWx);
+			("tomorrow";`.nlp.wx.getWx);
+			("weather";`.nlp.wx.getWx)
+			))
 	)
 
-wrap:{$[count x ss" and ";
-		.z.s each" and "vs x;
-	()~c:first(x:lower -4!x)inter key cfg.cmd;
-		"Unrecognized command ",raze x;
-		cfg.cmd[c]x]
-	}
+utl.getCmd:{{not(-11=type x)or()~x}{y first x inter key y}[x]/cfg.cmd}
+utl.runCmd:{cmd:utl.getCmd x;$[()~cmd;"Unrecognized command ",raze x;cmd x]}
+utl.wrap:utl.runCmd each -4!/:" and "vs lower@
 
 spt.shuffle:{.spt.put.shuffle x 2+x?"shuffle"}
 spt.restart:{.spt.put.seek 0}

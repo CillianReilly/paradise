@@ -14,6 +14,6 @@ MIC:0^first"J"$.Q.opt[.z.x]`mic
 system"t 60000"
 system"S ",string 7h$.z.t
 
-paradise:.nlp.wrap
+paradise:.nlp.utl.wrap
  
 if[MIC;.log.out"Starting mic";init[]]
