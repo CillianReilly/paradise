@@ -20,7 +20,9 @@ cfg.cmd:(!). flip(
 			("on";`.nlp.wx.getWxByDay);
 			("tomorrow";`.nlp.wx.getWxTmrw);
 			("weather";`.nlp.wx.getWx)
-			))
+			));
+	("connection";`.utl.con.chk);
+	("connected";`.utl.con.chk)
 	)
 
 utl.days:("saturday";"sunday";"monday";"tuesday";"wednesday";"thursday";"friday");
