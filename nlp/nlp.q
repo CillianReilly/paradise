@@ -19,7 +19,7 @@ cfg.cmd:(!). flip(
 	("weather";(!). flip(
 			("now";`.nlp.wx.getWx);
 			("today";`.nlp.wx.getWx);
-			("tomorrow";`.nlp.wx.getWx);
+			("tomorrow";`.nlp.wx.getWxTmrw);
 			("weather";`.nlp.wx.getWx)
 			))
 	)
@@ -88,5 +88,11 @@ wx.getWx:{
 	c:r`currently;h:r`hourly;
 	"Currently ",ssr[lower c`summary;" and ";", "]," and temperatures of ",string[7h$c`temperature]," degrees. The forecast is ",(-1_h`summary),", temperatures between ",(" and "sv string 7h$(min;max)@\:h[`data;;`temperature])," degrees."
 	}
+
+wx.getWxTmrw:{
+        r:.wx.utl.getWx raze(2+x?"in")_x except enlist"tomorrow";if[10=type r;:r];
+        t:r[`daily;`data;2];
+        "Tomorrow's forecast is ",(-1_t`summary),", temperatures between ",(" and "sv string 7h$t`temperatureLow`temperatureHigh)," degrees."
+        }
 
 \d .
