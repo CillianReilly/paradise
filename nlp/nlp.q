@@ -17,13 +17,13 @@ cfg.cmd:(!). flip(
 	("queue";`.nlp.spt.queue);
 	("radio";`.nlp.spt.radio);
 	("weather";(!). flip(
-			("now";`.nlp.wx.getWx);
-			("today";`.nlp.wx.getWx);
+			("on";`.nlp.wx.getWxByDay);
 			("tomorrow";`.nlp.wx.getWxTmrw);
 			("weather";`.nlp.wx.getWx)
 			))
 	)
 
+utl.days:("saturday";"sunday";"monday";"tuesday";"wednesday";"thursday";"friday");
 utl.getCmd:{(not in[;0 -11h]type@){y first key[y]inter x}[x]/cfg.cmd}
 utl.runCmd:{cmd:utl.getCmd x;$[()~cmd;"Unrecognized command ",raze x;cmd x]}
 utl.wrap:utl.runCmd each -4!/:" and "vs lower@
@@ -90,10 +90,17 @@ wx.getWx:{
 	"Currently ",ssr[lower c`summary;" and ";", "]," and temperatures of ",string[7h$c`temperature]," degrees. The forecast is ",(-1_h`summary),", temperatures between ",(" and "sv string 7h$(min;max)@\:h[`data;;`temperature])," degrees."
 	}
 
+wx.getForecast:{x,"'s forecast is ",(-1_y`summary),", temperatures between ",(" and "sv string 7h$y`temperatureLow`temperatureHigh)," degrees, and ",string[7h$100*y`precipProbability]," percent chance of rain."}
+
 wx.getWxTmrw:{
         r:.wx.utl.getWx raze(2+x?"in")_utl.remove[x;"tomorrow"];if[10=type r;:r];
-        t:r[`daily;`data;2];
-        "Tomorrow's forecast is ",(-1_t`summary),", temperatures between ",(" and "sv string 7h$t`temperatureLow`temperatureHigh)," degrees."
+        wx.getForecast["Tomorrow";]r[`daily;`data;2]
         }
+
+wx.getWxByDay:{
+	d:first x inter utl.days;
+	r:.wx.utl.getWx raze(2+x?"in")_utl.remove[x;("on";d)];if[10=type r;:r];
+	wx.getForecast[d;]r[`daily;`data]1+((.z.d mod 7)rotate utl.days)?d
+	}
 
 \d .
