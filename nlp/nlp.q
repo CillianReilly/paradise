@@ -21,8 +21,8 @@ cfg.cmd:(!). flip(
 			("tomorrow";`.nlp.wx.getWxTmrw);
 			("weather";`.nlp.wx.getWx)
 			));
-	("connection";`.utl.con.chk);
-	("connected";`.utl.con.chk)
+	("connection";`.nlp.utl.con);
+	("connected";`.nlp.utl.con)
 	)
 
 utl.days:("saturday";"sunday";"monday";"tuesday";"wednesday";"thursday";"friday");
@@ -104,5 +104,7 @@ wx.getWxByDay:{
 	r:.wx.utl.getWx raze(2+x?"in")_utl.remove[x;("on";d)];if[10=type r;:r];
 	wx.getForecast[d;]r[`daily;`data]1+((.z.d mod 7)rotate utl.days)?d
 	}
+
+utl.con:{c:.utl.con.chk[];$[c=200;"Internet connection ok";"Not connected, response code was ",string c]}
 
 \d .
