@@ -25,10 +25,10 @@ del.deleteFromPlaylist:{del.req2["/v1/playlists/",x,"/tracks";]enlist[`uris]!(1|
 get.req:{utl.parseResponse get.sendReq x}
 get.sendReq:{[ep]cfg.url"GET ",(1_string[cfg.url],ep)," HTTP/1.0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"}
 
+get.info:{get.req"/v1/me/player"}
 get.vol:{get.info[][`device;`volume_percent]}
 get.devices:{r:get.req"/v1/me/player/devices";$[10=type r;r;r`devices]}
 get.playing:{get.req"/v1/me/player/currently-playing"}
-get.info:{get.req"/v1/me/player"}
 get.recent:{get.req"/v1/me/player/recently-played"}
 get.me:{get.req"/v1/me"}
 get.playlists:{get.req"/v1/me/playlists"}
@@ -37,7 +37,7 @@ get.recommendations:{get.req"/v1/recommendations?",x}
 get.followedArtists:{r:get.req"/v1/me/following?type=artist";$[10=type r;r;r`artists]}
 get.artistDetails:{get.req"/v1/artists/","/"sv(x;y)}
 get.top:{get.req"/v1/me/top/",x}	// 1st param is "tracks" or "artists", also accepts artists?time_range=long_term&limit=30 etc
-get.search:{r:get.req"/v1/search?q=",("+"^x),"&type=","+"^y;$[10=type r;r;r[`$y,"s";`items]]}	// 1st param is query, 2nd is album, playlist, artist, ot track
+get.search:{r:get.req"/v1/search?q=",("+"^x),"&type=","+"^y;if[10=type r;:r];r[`$y,"s";`items]}
 
 
 // POST Requests
