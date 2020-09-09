@@ -3,7 +3,7 @@
 
 //DarkSky
 ds.req:{utl.parseResponse ds.sendReq x}
-ds.sendReq:{ds.cfg.url"GET /forecast/",ds.cfg.key,"/",(","sv string x`lat`lng)," HTTP/1.1\r\nHost: ",(9_string ds.cfg.url),"\r\n\r\n"}
+ds.sendReq:{ds.cfg.url"GET /forecast/",ds.cfg.key,"/",(","sv string x`lat`lng),"?units=si HTTP/1.1\r\nHost: ",(9_string ds.cfg.url),"\r\n\r\n"}
 
 //OpenCage
 oc.req:{utl.parseResponse oc.sendReq x}
@@ -11,7 +11,6 @@ oc.sendReq:{oc.cfg.url"GET /geocode/v1/json?q=",x,"&key=",oc.cfg.key,"&limit=1&n
 oc.getGeo:{r:oc.req"+"^x;if[10=type r;:r];if[()~r`results;:"No results found for ",x];exec first geometry from`confidence xdesc r`results}
 
 //Weather utilities
-utl.F2C:{7h$(5%9)*x-32}
 utl.parseResponse:{utl.codes[.utl.http.parseResponseCode x]x}
 utl.getWx:{r:oc.getGeo x;if[10=type r;:r];ds.req r}
 
