@@ -27,6 +27,7 @@ cfg.cmd:(!). flip(
 utl.getCmd:{(not in[;0 -11h]type@){y first key[y]inter x}[x]/cfg.cmd}
 utl.runCmd:{cmd:utl.getCmd x;$[()~cmd;"Unrecognized command ",raze x;cmd x]}
 utl.wrap:utl.runCmd each -4!/:" and "vs lower@
+utl.remove:{-4!trim ssr/[raze x;y;count[y]#""]}
 
 spt.shuffle:{.spt.put.shuffle x 2+x?"shuffle"}
 spt.restart:{.spt.put.seek 0}
@@ -90,7 +91,7 @@ wx.getWx:{
 	}
 
 wx.getWxTmrw:{
-        r:.wx.utl.getWx raze(2+x?"in")_x except enlist"tomorrow";if[10=type r;:r];
+        r:.wx.utl.getWx raze(2+x?"in")_utl.remove[x;"tomorrow"];if[10=type r;:r];
         t:r[`daily;`data;2];
         "Tomorrow's forecast is ",(-1_t`summary),", temperatures between ",(" and "sv string 7h$t`temperatureLow`temperatureHigh)," degrees."
         }
