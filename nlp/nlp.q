@@ -86,7 +86,7 @@ spt.devices:{
 wx.getWx:{
 	r:.wx.utl.getWx raze(2+x?"in")_x;if[10=type r;:r];
 	c:r`currently;h:r`hourly;
-	"Currently ",ssr[lower c`summary;" and ";", "]," and temperatures of ",string[.wx.utl.F2C c`temperature]," degrees. The forecast is ",(-1_h`summary),", temperatures between ",(" and "sv string .wx.utl.F2C(min;max)@\:h[`data;;`temperature])," degrees."
+	"Currently ",ssr[lower c`summary;" and ";", "]," and temperatures of ",string[7h$c`temperature]," degrees. The forecast is ",(-1_h`summary),", temperatures between ",(" and "sv string 7h$(min;max)@\:h[`data;;`temperature])," degrees."
 	}
 
 \d .
