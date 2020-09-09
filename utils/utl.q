@@ -1,8 +1,8 @@
 \d .utl
 
 con.url:`:https://www.howsmyssl.com
-con.req:{con.url"GET /a/check HTTP/1.1\r\nHost: ",(9_string con.url),"\r\n\r\n"}
-con.chk:{c:http.parseResponseCode con.req[];$[c=200;"Internet connection ok";"Not connected, response code was ",string c]}
+con.req:con.url"GET /a/check HTTP/1.1\r\nHost: ",(9_string con.url),"\r\n\r\n"@
+con.chk:{http.parseResponseCode con.req[]}
 
 http.jk:{.j.k 2{reverse min[x?"{}"]_x}/x}
 http.genParameters:{"&"sv"="sv/:flip(key;value)@\:where[0<>count each x]#x}
