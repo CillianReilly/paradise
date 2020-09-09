@@ -24,7 +24,7 @@ cfg.cmd:(!). flip(
 			))
 	)
 
-utl.getCmd:{{not(-11=type x)or()~x}{y first x inter key y}[x]/cfg.cmd}
+utl.getCmd:{(not in[;0 -11h]type@){y first x inter key y}[x]/cfg.cmd}
 utl.runCmd:{cmd:utl.getCmd x;$[()~cmd;"Unrecognized command ",raze x;cmd x]}
 utl.wrap:utl.runCmd each -4!/:" and "vs lower@
 
