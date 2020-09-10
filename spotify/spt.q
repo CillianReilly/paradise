@@ -126,7 +126,7 @@ utl.getUri:{
 utl.radio:{
 	r:utl.getUri[x;y];if[10=type r;:r];
 	p:("seed_artists";"seed_tracks")!last each":"vs/:r`uri`turi;
-	p:.utl.http.genParameters @[p;"limit";:;"100"];
+	p:.utl.http.genParamStr @[p;"limit";:;"100"];
 	r:get.recommendations p;if[10=type r;:r];
 	u:exec uri from`popularity xdesc r`tracks;
 	rid:utl.getRadioID"radio";if[not rid like"sp*";:rid];
