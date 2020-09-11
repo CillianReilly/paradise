@@ -33,7 +33,7 @@ get.recent:{get.req"/v1/me/player/recently-played"}
 get.me:{get.req"/v1/me"}
 get.playlists:{get.req"/v1/me/playlists"}
 get.playlistTracks:{get.req"/v1/playlists/",x,"/tracks"}
-get.recommendations:{get.req"/v1/recommendations?",x}
+get.recommendations:{get.req"/v1/recommendations",x}
 get.followedArtists:{r:get.req"/v1/me/following?type=artist";$[10=type r;r;r`artists]}
 get.artistDetails:{get.req"/v1/artists/","/"sv(x;y)}
 get.top:{get.req"/v1/me/top/",x}	// 1st param is "tracks" or "artists", also accepts artists?time_range=long_term&limit=30 etc
@@ -125,10 +125,11 @@ utl.getUri:{
 	}
 utl.radio:{
 	r:utl.getUri[x;y];if[10=type r;:r];
+	t:0<count tid:r`turi;
 	p:("seed_artists";"seed_tracks")!last each":"vs/:r`uri`turi;
-	p:.utl.http.genParamStr @[p;"limit";:;"100"];
+	p:.utl.http.genParamStr @[p;"limit";:;]string 100-t;
 	r:get.recommendations p;if[10=type r;:r];
-	u:exec uri from`popularity xdesc r`tracks;
+	u:$[t;enlist tid;()],exec uri from`popularity xdesc r`tracks;
 	rid:utl.getRadioID"radio";if[not rid like"sp*";:rid];
 	r:put.replacePlaylist[last":"vs rid;u];if[10=type r;:r];system"sleep 1";
 	put.play[rid;0]
