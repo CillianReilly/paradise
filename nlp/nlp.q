@@ -81,10 +81,13 @@ spt.play:{
 	}
 
 spt.devices:{
-        r:.spt.get.devices[];if[10=type r;:r];
-        if[not c:count r;:"No devices currently available"];
-        "Device",$[1=c;"";"s"]," ",(","sv r`type)," ",$[1=c;"is";"are"]," currently available"
-        }
+	r:.spt.get.devices[];if[10=type r;:r];
+	if[not count r;:"No devices currently available"];
+	a:select from r where is_active;r:r except a;
+	f:{$[x;" "sv(", "sv y`type;$[x=1;"is";"are"];"currently";z);""]};
+	o:f'[count each(a;r);(a;r);("active";"available")];
+	", "sv o where not 0=count each o
+	}
 
 wx.getWx:{
 	r:.wx.utl.getWx raze(2+x?"in")_x;if[10=type r;:r];
