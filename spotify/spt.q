@@ -8,7 +8,7 @@ cfg.codes:`s#(!). flip(
 	(204;{"Success"});
 	(205;{'"205+ Response"});
 	(300;{'"300 Error"});
-	(400;{$["J"$(h:.utl.http.parseResponseHeaders x)`ContentLength;.utl.http.jk[x][`error;`message];(1+h?" ")_h:h`response]});
+	(400;{$["J"$(h:.utl.http.parseRH x)`ContentLength;.utl.http.jk[x][`error;`message];(1+h?" ")_h:h`response]});
 	(500;{.utl.http.jk[x][`error;`message]})
 	)
 
@@ -108,7 +108,7 @@ put.play:{[uri;offset]
 
 
 //Spotify specific utilities
-utl.parseResponse:{cfg.codes[.utl.http.parseResponseCode x]x}
+utl.parseResponse:{cfg.codes[.utl.http.parseRC x]x}
 utl.checkToken:{if[.z.p>00:59+cfg.accessTime;cfg.accessToken:pst.getToken[]]}
 utl.getPlaylistUri:{r:get.playlists[];if[10=type r;:r];exec first uri from r[`items]where name like x}
 utl.getRadioID:{

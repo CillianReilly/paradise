@@ -2,7 +2,7 @@
 \l weather/cfg.q
 
 //Weather utilities
-utl.parseResponse:{utl.codes[.utl.http.parseResponseCode x]x}
+utl.parseResponse:{utl.codes[.utl.http.parseRC x]x}
 utl.getWx:{r:oc.getGeo x;if[10=type r;:r];ds.req r}
 
 //DarkSky
@@ -30,7 +30,7 @@ utl.codes:`s#(!). flip(
 	(200;.utl.http.jk);
 	(204;{'"204 Error"});
 	(300;{'"300 Error"});
-	(400;{(1+r?" ")_r:.utl.http.parseResponseHeaders[x]`response});
+	(400;{(1+r?" ")_r:.utl.http.parseRH[x]`response});
 	(401;{'"401 Error"});
 	(500;{'"500 Error"})
 	)
