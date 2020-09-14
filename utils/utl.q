@@ -2,7 +2,7 @@
 
 http.get:{x@"GET ",y," HTTP/1.1\r\nHost: ",(9_string x),"\r\n\r\n"}
 
-http.pt:{(4+x ss"\r\n\r\n")_x}
+http.pt:{(4+first x ss"\r\n\r\n")_x}
 http.jk:{.j.k 2{reverse min[x?"{}"]_x}/x}
 http.parseRC:{"J"$x 0 1 2+first x ss"[0-9][0-9][0-9]"}
 http.parseRH:{(!).(`code;http.parseRC x),'(`$except\:[;"-"]@;::)@'flip((0,'i+/:(s?\:":"))_'s:1_r:d vs(x ss d,d:"\r\n")#x)@\:i:0 2}
