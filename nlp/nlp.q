@@ -28,7 +28,7 @@ cfg.cmd:(!). flip(
 utl.days:("saturday";"sunday";"monday";"tuesday";"wednesday";"thursday";"friday");
 utl.getCmd:{(not in[;0 -11h]type@){y first key[y]inter x}[x]/cfg.cmd}
 utl.runCmd:{cmd:utl.getCmd x;$[()~cmd;"Unrecognized command ",raze x;cmd x]}
-utl.wrap:utl.runCmd each -4!/:" and "vs lower@
+utl.wrap:utl.runCmd each -4!/:" and "vs lower trim@
 utl.remove:{-4!trim ssr/[raze x;y;count[y]#""]}
 
 spt.shuffle:{.spt.put.shuffle x 2+x?"shuffle"}
