@@ -22,7 +22,12 @@ cfg.cmd:(!). flip(
 			("weather";`.nlp.wx.getWx)
 			));
 	("connection";`.nlp.utl.con);
-	("connected";`.nlp.utl.con)
+	("connected";`.nlp.utl.con);
+	("who";`.nlp.wlf.query);
+	("what";`.nlp.wlf.query);
+	("when";`.nlp.wlf.query);
+	("where";`.nlp.wlf.query);
+	("why";`.nlp.wlf.query)
 	)
 
 utl.days:("saturday";"sunday";"monday";"tuesday";"wednesday";"thursday";"friday");
@@ -109,5 +114,7 @@ wx.getWxByDay:{
 	}
 
 utl.con:{c:.utl.con.chk[];$[c=200;"Internet connection ok";"Not connected, response code was ",string c]}
+
+wlf.query:.wlf.get.short raze@
 
 \d .
