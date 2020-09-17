@@ -36,11 +36,14 @@ utl.runCmd:{cmd:utl.getCmd x;$[()~cmd;"Unrecognized command ",raze x;cmd x]}
 utl.wrap:utl.runCmd each -4!/:" and "vs lower trim@
 utl.remove:{-4!trim ssr/[raze x;y;count[y]#""]}
 
-spt.shuffle:{.spt.put.shuffle x 2+x?"shuffle"}
 spt.restart:{.spt.put.seek 0}
 spt.next:{r:.spt.pst.next[];if[not"Success"~r;:r];system"sleep 1";spt.playing[]}
 spt.prev:{r:.spt.pst.prev[];if[not"Success"~r;:r];system"sleep 1";spt.playing[]}
 spt.rand:{r:.spt.put.rand[];if[not"Success"~r;:r];system"sleep 1";spt.playing[]}
+spt.shuffle:{
+	if[x~enlist"shuffle";:"Shuffle is ",("off";"on").spt.get.shuffle[]];
+	.spt.put.shuffle x 2+x?"shuffle"
+	}
 
 spt.getSearchTerms:{
 	x:ssr/[raze x;(" by ";y," ");(" ";"")];
