@@ -16,3 +16,6 @@
 * Dark Sky docs: https://darksky.net/dev/docs
 * OpenCage docs: https://opencagedata.com/api
 * Configure API keys in weather/cfg.q
+##### Wolfram|Alpha
+* Docs: https://products.wolframalpha.com/api/
+* Configure App ID in wolfram/cfg.q

@@ -7,6 +7,7 @@ MIC:0^first"J"$.Q.opt[.z.x]`mic
 \l utils/utl.q
 \l spotify/spt.q
 \l weather/wx.q
+\l wolfram/wlf.q
 \l nlp/nlp.q
 \l nlp/mic.q
 
