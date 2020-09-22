@@ -12,7 +12,6 @@ cfg.cmd:(!). flip(
 	("play";`.nlp.spt.play);
 	("restart";`.nlp.spt.restart);
 	("transfer";`.nlp.spt.transfer);
-	("playing";`.nlp.spt.playing);
 	("shuffle";`.nlp.spt.shuffle);
 	("queue";`.nlp.spt.queue);
 	("radio";`.nlp.spt.radio);
@@ -27,7 +26,16 @@ cfg.cmd:(!). flip(
 	("what";`.nlp.wlf.query);
 	("when";`.nlp.wlf.query);
 	("where";`.nlp.wlf.query);
-	("why";`.nlp.wlf.query)
+	("why";`.nlp.wlf.query);
+	("playlist";(!). flip(
+			("add";(!). flip(
+					("new";`.nlp.spt.createPlaylist);
+					("to";`.nlp.spt.addToPlaylist)
+					));
+			("make";`.nlp.spt.createPlaylist);
+			("create";`.nlp.spt.createPlaylist)
+			));
+	("playing";`.nlp.spt.playing)
 	)
 
 utl.days:("saturday";"sunday";"monday";"tuesday";"wednesday";"thursday";"friday");
@@ -95,6 +103,25 @@ spt.devices:{
 	f:{$[x;" "sv(", "sv y`type;$[x=1;"is";"are"];"currently";z);""]};
 	o:f'[count each(a;r);(a;r);("active";"available")];
 	", "sv o where not 0=count each o
+	}
+
+spt.createPlaylist:{
+	n:(2+max except[;count x]x?/:("playlist";"name"))_x;
+	n:raze @'[n;0;:;upper first each n];
+	r:.spt.pst.createPlaylist n;
+	$[10=type r;r;"Success"]
+	}
+
+spt.addToPlaylist:{
+	n:raze utl.remove[(2+max where x~\:"to")_x;enlist"playlist"];
+	r:.spt.get.playlists[];if[10=type r;:r];
+	pid:exec first id from r[`items]where lower[name]like n;
+	t:spt.getSearchTerms[;"add"]raze(-1+max where x~\:"to")#x;
+	uri:$[first[t]in("this";"playing");
+		[r:.spt.get.playing[];if[10=type r;:r];r[`item;`uri]];
+		[r:.spt.utl.getUri . t;if[10=type r;:r];r`turi]];
+	r:.spt.pst.addToPlaylist[pid;uri];
+	$[10=type r;r;"Success"]
 	}
 
 wx.getWx:{
