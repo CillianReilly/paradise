@@ -31,8 +31,8 @@ cfg.cmd:(!). flip(
 	)
 
 utl.days:("saturday";"sunday";"monday";"tuesday";"wednesday";"thursday";"friday");
-utl.getCmd:{(not in[;0 -11h]type@){y first key[y]inter x}[x]/cfg.cmd}
-utl.runCmd:{cmd:utl.getCmd x;$[()~cmd;"Unrecognized command ",raze x;cmd x]}
+utl.getCmd:{(not in[;0 11h]abs type@){y first key[y]inter x}[x]/cfg.cmd}
+utl.runCmd:{cmd:utl.getCmd x;$[any cmd~/:"s*"$\:();"Unrecognized command ",raze x;cmd x]}
 utl.wrap:utl.runCmd each -4!/:" and "vs lower trim@
 utl.remove:{-4!trim ssr/[raze x;y;count[y]#""]}
 
