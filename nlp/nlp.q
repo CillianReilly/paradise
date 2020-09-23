@@ -116,11 +116,13 @@ spt.addToPlaylist:{
 	n:raze utl.remove[(2+max where x~\:"to")_x;enlist"playlist"];
 	r:.spt.get.playlists[];if[10=type r;:r];
 	pid:exec first id from r[`items]where lower[name]like n;
+	uris:.spt.get.playlistTracks[pid][`items;`track]`uri;
 	t:spt.getSearchTerms[;"add"]raze(-1+max where x~\:"to")#x;
-	uri:$[first[t]in("this";"playing");
+	u:$[any first[t]like/:("*this*";"*playing*";"*currently*");
 		[r:.spt.get.playing[];if[10=type r;:r];r[`item;`uri]];
 		[r:.spt.utl.getUri . t;if[10=type r;:r];r`turi]];
-	r:.spt.pst.addToPlaylist[pid;uri];
+	if[u in uris;:"Track already included in playlist ",n];
+	r:.spt.pst.addToPlaylist[pid;u];
 	$[10=type r;r;"Success"]
 	}
 
