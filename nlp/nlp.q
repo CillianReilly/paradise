@@ -121,7 +121,7 @@ spt.addToPlaylist:{
 	u:$[any first[t]like/:("*this*";"*playing*";"*currently*");
 		[r:.spt.get.playing[];if[10=type r;:r];r[`item;`uri]];
 		[r:.spt.utl.getUri . t;if[10=type r;:r];r`turi]];
-	if[u in uris;:"Track already included in playlist soul good"];
+	if[u in uris;:"Track already included in playlist ",x];
 	r:.spt.pst.addToPlaylist[pid;u];
 	$[10=type r;r;"Success"]
 	}
