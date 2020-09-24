@@ -22,6 +22,7 @@ cfg.cmd:(!). flip(
 			));
 	("connection";`.nlp.utl.con);
 	("connected";`.nlp.utl.con);
+	("status";`.nlp.utl.con);
 	("who";`.nlp.wlf.query);
 	("what";`.nlp.wlf.query);
 	("when";`.nlp.wlf.query);
