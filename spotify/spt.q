@@ -25,7 +25,6 @@ del.deleteFromPlaylist:{del.req2["/v1/playlists/",x,"/tracks";]enlist[`uris]!(1|
 get.req:{utl.parseResponse get.sendReq x}
 get.sendReq:{[ep]cfg.url"GET ",(1_string[cfg.url],ep)," HTTP/1.0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"}
 
-
 get.info:{get.req"/v1/me/player"}
 get.vol:{get.info[][`device;`volume_percent]}
 get.shuffle:{.spt.get.info[]`shuffle_state}
@@ -104,8 +103,9 @@ put.rand:{
 //Offset is position to play from i.e. track number (starts from 0)
 put.play:{[uri;offset]
 	t:(":"vs uri)1;
-	req:($[t~"track";`uris;`context_uri],$[t in("playlist";"album");`offset;()])#`context_uri`uris`offset!(uri;enlist uri;enlist[`position]!enlist offset);
-	put.req2["/v1/me/player/play";req]
+	k:$[t~"track";enlist`uris;t~"artist";enlist`context_uri;`context_uri`offset];
+	d:`context_uri`uris`offset!(uri;enlist uri;enlist[`position]!enlist offset);
+	put.req2["/v1/me/player/play";]k#d
 	}
 
 
