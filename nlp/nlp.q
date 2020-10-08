@@ -148,6 +148,6 @@ wx.getWxByDay:{
 
 utl.con:{c:.utl.con.chk[];$[c=200;"Internet connection ok";"Not connected, response code was ",string c]}
 
-wlf.query:.wlf.get.short raze@
+wlf.query:{.wlf.get.short raze x}
 
 \d .
