@@ -1,5 +1,6 @@
 -1"PARADISE:Personal Assistant - Rather Adept Interface Saving Effort";
 
+ML:0^first"J"$.Q.opt[.z.x]`ml
 MIC:0^first"J"$.Q.opt[.z.x]`mic
 
 \l p.q
@@ -8,6 +9,7 @@ MIC:0^first"J"$.Q.opt[.z.x]`mic
 \l spotify/spt.q
 \l weather/wx.q
 \l wolfram/wlf.q
+\l ml/ml.q
 \l nlp/nlp.q
 \l nlp/mic.q
 
