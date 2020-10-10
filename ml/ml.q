@@ -50,7 +50,7 @@ net.trn:{[i;o;lr;wb]
 	}
 
 //Init
-par.data:@[get;`:MLCommands;([]input:`$();output:())];
+par.data:@[get;`:ml/MLCommands;([]input:`$();output:())];
 par.cmd:distinct par.data`output
 par.words:distinct raze" "vs/:par.data`input
 par.activate:9h$par.words in" "vs
