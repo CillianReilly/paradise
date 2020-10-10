@@ -18,8 +18,8 @@ per.genPerceptron:{[ep;i;o]	// i(nputs) o(utputs) w(eights) b(ias)
 
 per.trn:{[i;o;z]
 	w:z 0;b:z 1;
-	p:utl.sig utl.fp[b;w;i];  // p(redictions)    
-	0N!avg xexp[;2]e:p-o;                   // e(rror)
+	p:utl.sig utl.fp[b;w;i];	// p(redictions)    
+	0N!avg xexp[;2]e:p-o;		// e(rror)
 	dw:e*utl.dSig p;
 	(w-sum dw*flip i;b-sum dw)
 	}
