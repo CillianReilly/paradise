@@ -64,12 +64,10 @@ par.trn:{[ep;lr]
 
 par.init:{[ep;lr]
 	if[not count par.data;ML::0;:"No training data"];
-	wb:@[get;`:ml/wb;{par.trn[y;z]}[;ep;lr]];
+	wb:par.trn[ep;lr];
 	par.wb:wb;
 	par.predict:net.predict wb;
 	par.getCmd:par.cmd{x?max x}first par.predict enlist par.activate@;
 	}
 
 \d .
-
-if[ML;.ml.par.init[2000;0.001]];
