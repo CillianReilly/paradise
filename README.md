@@ -18,6 +18,9 @@
 * IDs available at: https://developer.spotify.com/dashboard/login
 * Authorization: https://developer.spotify.com/documentation/general/guides/authorization-guide
 * Configure userID, ID, secretID, refreshToken and auth64 in spotify/cfg.q
+##### Twilio
+* Twilio docs: https://www.twilio.com/docs
+* Conifgure IDs, phone numbers and tokens in twilio/cfg.q
 ##### Weather
 * Dark Sky docs: https://darksky.net/dev/docs
 * OpenCage docs: https://opencagedata.com/api
