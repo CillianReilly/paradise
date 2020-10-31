@@ -2,12 +2,8 @@
 
 cfg.enc:("+";" ")!("%2B";"+")
 
-http.get:{x@"GET ",y," HTTP/1.1\r\nHost: ",(9_string x),"\r\n\r\n"}
-http.post:{[url;ep;rh;req]
-	url"POST ",ep," HTTP/1.1\r\nHost: ",(9_string url),"\r\n",
-	rh,"\r\n\r\n",
-	req,"\r\n\r\n"
-	}
+http.get:{x"\r\n"sv("GET ",y," HTTP/1.1";"Host: ",9_string x;"";"")}
+http.post:{[url;ep;rh;req]url"\r\n"sv("POST ",ep," HTTP/1.1";"Host: ",9_string url;rh;"";req;"";"")}
 
 http.pt:{(4+first x ss"\r\n\r\n")_x}
 http.jk:{.j.k 2{reverse min[x?"{}"]_x}/x}
