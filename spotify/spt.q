@@ -129,7 +129,7 @@ utl.radio:{
 	r:utl.getUri[x;y];if[10=type r;:r];
 	t:0<count tid:r`turi;
 	p:("seed_artists";"seed_tracks")!last each":"vs/:r`uri`turi;
-	p:.utl.http.genParamStr @[p;"limit";:;]string 100-t;
+	p:.utl.http.genEncParamStr @[p;"limit";:;]string 100-t;
 	r:get.recommendations p;if[10=type r;:r];
 	u:$[t;enlist tid;()],exec uri from`popularity xdesc r`tracks;
 	rid:utl.getRadioID"radio";if[not rid like"sp*";:rid];

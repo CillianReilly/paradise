@@ -4,8 +4,8 @@
 utl.genParamDict:(enlist["appid"]!enlist cfg.appID)upsert
 utl.genFullParamDict:utl.genParamDict("output";"input")!("json";)@
 utl.genShortParamDict:utl.genParamDict(2 enlist/"i")!enlist@
-utl.genFullParamStr:.utl.http.genParamStr utl.genFullParamDict@
-utl.genShortParamStr:.utl.http.genParamStr utl.genShortParamDict@
+utl.genFullParamStr:.utl.http.genEncParamStr utl.genFullParamDict@
+utl.genShortParamStr:.utl.http.genEncParamStr utl.genShortParamDict@
 utl.parseResponse:{utl.codes[.utl.http.parseRC x]x}
 
 get.sendReq:.utl.http.get[cfg.url;]

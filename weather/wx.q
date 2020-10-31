@@ -7,14 +7,14 @@ utl.getWx:{r:oc.getGeo x;if[10=type r;:r];ds.req r}
 
 //DarkSky
 ds.genParamDict:enlist["units"]!enlist"si"
-ds.genParamStr:.utl.http.genParamStr ds.genParamDict
+ds.genParamStr:.utl.http.genEncParamStr ds.genParamDict
 ds.genEndPoint:"/"sv("";"forecast";ds.cfg.key;)","sv string@[;`lat`lng]@
 ds.sendReq:.utl.http.get[ds.cfg.url;] ,[;ds.genParamStr[]]ds.genEndPoint@
 ds.req:utl.parseResponse ds.sendReq@
 
 //OpenCage
 oc.genParamDict:("q";"key";"limit";"no_annotations")!(;oc.cfg.key;"1";"1")@
-oc.genParamStr:.utl.http.genParamStr oc.genParamDict@
+oc.genParamStr:.utl.http.genEncParamStr oc.genParamDict@
 oc.genEndPoint:"/geocode/v1/json"
 oc.sendReq:.utl.http.get[oc.cfg.url;]oc.genEndPoint[],oc.genParamStr@
 oc.req:utl.parseResponse oc.sendReq@
