@@ -5,7 +5,7 @@
 ##### run.q parameters
 * cli - specify if kdb+ is ran in foreground or background. Default 1
 * mic - start the microphone. Default 0
-* ml - use machine learning model to predict commands. Default 0
+* ml - use machine learning model to predict commands. Default 1
 
 ##### Requirements
 * kdb+ 3.5+ https://code.kx.com/q
