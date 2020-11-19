@@ -1,11 +1,7 @@
 reminders:("ds**";enlist",")0:`:calendar/reminders.csv
 
-\l utils/utl.q
-\l twilio/twl.q
-
 \d .cal
 
-//Could probably be refactored
 utl.comp:{[fc;f;dc;d](fc in f)&{(x$/:y)~\:x$z}[;dc;d]$[f in`Y;`mm`dd;`dd]}
 utl.yearlyComp:utl.comp[;`Y;;.z.d]
 utl.monthlyComp:utl.comp[;`M;;.z.d]
@@ -17,6 +13,7 @@ utl.getMonthly:utl.get[;utl.monthlyComp]
 utl.getRmds:{raze utl[`getMonthly`getYearly]@\:0`reminders}
 utl.fmtRmds:{"Reminder: ",(", "sv"'s "sv/:flip x`name`reminder)," today"}
 
-utl.sendRmd:{r:utl.getRmds[];if[not count r;:"No reminders today"];.twl.pst.text utl.fmtRmds r}
+utl.rmds:{r:utl.getRmds[];if[not count r;:()];utl.fmtRmds r}
+utl.sendRmd:{r:utl.rmds[];if[not count r;:"No reminders today"];.twl.pst.text r}
 
 \d .
