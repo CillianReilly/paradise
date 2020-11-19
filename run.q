@@ -19,6 +19,6 @@ system"t 60000"
 system"S ",string 7h$.z.t
 
 paradise:.nlp.utl.wrap
- 
+
+if[ML;.ml.par.init[2000;0.001]] 
 if[MIC;.log.out"Starting mic";init[]]
-if[ML;.ml.par.init[2000;0.001]];
