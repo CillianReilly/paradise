@@ -17,6 +17,6 @@ utl.getMonthly:utl.get[;utl.monthlyComp]
 utl.getRmds:{raze utl[`getMonthly`getYearly]@\:0`reminders}
 utl.fmtRmds:{"Reminder: ",(", "sv"'s "sv/:flip x`name`reminder)," today"}
 
-utl.sendRmd:.twl.pst.text utl.fmtRmds utl.getRmds@
+utl.sendRmd:{r:utl.getRmds[];if[not count r;:"No reminders today"];.twl.pst.text utl.fmtRmds r}
 
 \d .
