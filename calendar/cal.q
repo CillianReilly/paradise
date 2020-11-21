@@ -6,9 +6,9 @@ utl.comp:{[fc;f;dc;d](fc in f)&{(x$/:y)~\:x$z}[;dc;d]$[f in`Y;`mm`dd;`dd]}
 utl.yearlyComp:utl.comp[;`Y;;.z.d]
 utl.monthlyComp:utl.comp[;`M;;.z.d]
 
-utl.get:{?[x;enlist(y;`freq;`date);0b;()]}
-utl.getYearly:utl.get[;utl.yearlyComp]
-utl.getMonthly:utl.get[;utl.monthlyComp]
+utl.sel:{?[x;enlist(y;`freq;`date);0b;()]}
+utl.getYearly:utl.sel[;utl.yearlyComp]
+utl.getMonthly:utl.sel[;utl.monthlyComp]
 
 utl.getRmds:{raze utl[`getMonthly`getYearly]@\:0`reminders}
 utl.fmtRmds:{"Reminder: ",(", "sv"'s "sv/:flip x`name`reminder)," today"}
