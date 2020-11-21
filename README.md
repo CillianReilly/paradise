@@ -13,6 +13,9 @@
 * embedPy: https://code.kx.com/q/ml/embedpy
 * gTTS https://pypi.org/project/gTTS
 * SpeechRecognition https://pypi.org/project/SpeechRecognition 
+##### Calendar
+* Add reminders to calendar/reminders.csv
+* Freq is either Y(early) or M(onthly)
 ##### Spotify
 * Docs: https://developer.spotify.com/documentation/web-api
 * IDs available at: https://developer.spotify.com/dashboard/login
