@@ -21,7 +21,7 @@ con.url:`:https://www.howsmyssl.com
 con.req:http.get[con.url;]"/a/check"@
 con.chk:http.parseRC con.req@
 
-c:@[con.chk;[];0];
+c:@[con.chk;[];0]
 -1"Internet connection",$[200=c;"";" not"]," ok: response code was ",string c;
 
 \d .
