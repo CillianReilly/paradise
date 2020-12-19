@@ -42,7 +42,7 @@ cfg.cmd:(!). flip(
 utl.days:("saturday";"sunday";"monday";"tuesday";"wednesday";"thursday";"friday");
 utl.getCmd:{(not in[;0 11 100h]abs type@){y first key[y]inter x}[x]/cfg.cmd}
 utl.runCmd:{cmd:$[0`ML;.ml.par.getCmd raze x;utl.getCmd x];$[any cmd~/:`,"s*"$\:();"Unrecognized command ",raze x;cmd x]}
-utl.wrap:utl.runCmd -4!lower trim@
+utl.wrap:@[utl.runCmd;;{"Error running command: ",x}] -4!lower trim@
 utl.remove:{-4!trim ssr/[raze x;y;count[y]#""]}
 
 spt.restart:{.spt.put.seek 0}
