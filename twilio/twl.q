@@ -13,7 +13,7 @@ utl.genTwiML:{"<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>",x,
 pst.sendReq:{.utl.http.post[cfg.url;x;utl.genReq string count y;]y:utl.genBody y}
 pst.req:{utl.parseResponse pst.sendReq[x;y]}
 pst.text:pst.req["/2010-04-01/Accounts/",cfg.sID,"/Messages.json";]
-pst.sendRes:{
+pst.callback:{
 	b:.utl.http.dec .utl.http.parseRP[x 0]`Body;
 	r:$["q)"~2#b;.Q.s1 value b;.nlp.utl.wrap b];
 	r:utl.genTwiML r;
