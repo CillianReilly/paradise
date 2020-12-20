@@ -12,7 +12,8 @@
 * Python 3.5+ https://www.python.org
 * embedPy: https://code.kx.com/q/ml/embedpy
 * gTTS https://pypi.org/project/gTTS
-* SpeechRecognition https://pypi.org/project/SpeechRecognition 
+* SpeechRecognition https://pypi.org/project/SpeechRecognition
+* ngrok https://ngrok.com 
 ##### Calendar
 * Add reminders to calendar/reminders.csv
 * Freq is either Y(early) or M(onthly)
