@@ -3,7 +3,7 @@ import gtts
 import speech_recognition as sr
 
 recognizer=sr.Recognizer()
-if MIC:microphone=sr.Microphone()
+microphone=sr.Microphone()
 
 def listen(recognizer,input):
 	with input as source:
