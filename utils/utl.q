@@ -11,7 +11,7 @@ cfg.enc:(!). flip(
 	("/";"%2F");
 	(" ";"+")
 	)
-cfg.dec:(!).(value;key)@\:cfg.enc
+cfg.dec:(!). reverse each(value;key)@\:cfg.enc
 
 http.get:{x"\r\n"sv("GET ",y," HTTP/1.1";"Host: ",9_string x;"";"")}
 http.post:{[url;ep;rh;req]url"\r\n"sv("POST ",ep," HTTP/1.1";"Host: ",9_string url;rh;"";req;"";"")}
