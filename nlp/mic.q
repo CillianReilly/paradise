@@ -4,7 +4,7 @@
 if[MIC;mic:@[.p.get`mic;;"Couldn't understand"]]
 speak:.p.get`speak
 
-run:{text:mic[];$[10=type text;.log.out text;speak .nlp.utl.wrap text`]}
+run:{text:mic[];$[10=type text;.log.out text;speak first .nlp.utl.main text`]}
 
 init:{
 	d:`s#0 12 17!("morning";"afternoon";"evening");
