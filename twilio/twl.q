@@ -15,7 +15,7 @@ pst.req:{utl.parseResponse pst.sendReq[x;y]}
 pst.text:pst.req["/2010-04-01/Accounts/",cfg.sID,"/Messages.json";]
 pst.callback:{
 	b:.utl.http.dec .utl.http.parseRP[x 0]`Body;
-	r:$["q)"~2#b;.Q.s1 value b;.nlp.utl.wrap b];
+	r:$["q)"~2#b;.Q.s1 value b;.nlp.utl.main b];
 	r:utl.genTwiML r;
 	utl.genRes r
 	}
