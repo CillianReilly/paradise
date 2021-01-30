@@ -19,6 +19,5 @@ system"t 60000"
 system"S ",string 7h$.z.t
 
 paradise:.nlp.utl.main
-\l dev.q
 
 if[ML;.ml.par.init[2000;0.001]] 
