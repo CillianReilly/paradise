@@ -2,7 +2,7 @@
 \l twilio/cfg.q
 
 utl.genBodyDict:("Body";"From";"To")!(;cfg.from;cfg.to)@
-utl.genBody:1_.utl.http.genEncParamStr utl.genBodyDict@
+utl.genBody:.utl.http.genEncParamStr utl.genBodyDict@
 utl.genReqDict:("Authorization: Basic ";"Content-Length: ";"Content-Type: ")!(cfg.auth;;"application/x-www-form-urlencoded")@
 utl.genResDict:{("HTTP/1.1 ";"content-type: ";"content-length: ";"";"")!("200";"application/xml";string count x;"";x)}
 utl.genReq:.utl.http.genRH utl.genReqDict@
