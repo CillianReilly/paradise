@@ -25,7 +25,7 @@ http.genRH:"\r\n"sv(,').(key;value)@\:
 http.parseRC:{"J"$x 0 1 2+first x ss"[0-9][0-9][0-9]"}
 http.parseRH:{(!).(`code;http.parseRC x),'(`$except\:[;"-"]@;::)@'flip((0,'i+/:(s?\:":"))_'s:1_r:d vs(x ss d,d:"\r\n")#x)@\:i:0 2}
 http.parseRP:(!).("S*";"=")0:"&"vs
-http.genParamStr:{"?","&"sv"="sv/:flip{@[x;where -10=type each x;1#]}each(key;value)@\:where[0<>count each x]#x}
+http.genParamStr:{"&"sv"="sv/:flip{@[x;where -10=type each x;1#]}each(key;value)@\:where[0<>count each x]#x}
 http.genEncParamStr:http.enc http.genParamStr@
 
 con.url:`:https://www.howsmyssl.com

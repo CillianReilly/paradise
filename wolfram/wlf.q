@@ -10,10 +10,10 @@ utl.parseResponse:{utl.codes[.utl.http.parseRC x]x}
 
 get.sendReq:.utl.http.get[cfg.url;]
 get.req:utl.parseResponse get.sendReq@
-get.short:get.req"/v1/result",utl.genShortParamStr@
-get.spoken:get.req"/v1/spoken",utl.genShortParamStr@
-get.conversation:get.req"/v1/conversation.jsp",utl.genShortParamStr@
-get.full:@[;`queryresult]get.req"/v2/query",utl.genFullParamStr@
+get.short:get.req"/v1/result?",utl.genShortParamStr@
+get.spoken:get.req"/v1/spoken?",utl.genShortParamStr@
+get.conversation:get.req"/v1/conversation.jsp?",utl.genShortParamStr@
+get.full:@[;`queryresult]get.req"/v2/query?",utl.genFullParamStr@
 
 //HTTP response actions to be filled in as encountered
 utl.codes:`s#(!). flip(
