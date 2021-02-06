@@ -11,7 +11,7 @@ run:{
 	text:mic[];
 	$[10=type text;
 		.log.out text;
-		speak first x(`.nlp.utl.main;text`)]
+		speak x(`.nlp.utl.main;text`)]
 	}
 
 init:{
