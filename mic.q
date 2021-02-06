@@ -16,7 +16,7 @@ run:{
 
 init:{
 	d:`s#0 12 17!("morning";"afternoon";"evening");
-	speak"Good ",(d`hh$t)," sir. The date is ",(10#first system"date")," and it is currently ",string`minute$t:ltime .z.p;
+	speak"Good ",(d`hh$t)," sir. The date is ",(10#first system"date")," and it is currently ",(string`minute$t:ltime .z.p)," GMT";
 	while[1b;@[run;x;{.log.err"Error running: ",x}]]
 	}
 
