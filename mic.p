@@ -2,9 +2,14 @@ import os
 import gtts
 import speech_recognition as sr
 
-recognizer=sr.Recognizer()
-microphone=sr.Microphone()
-
+def loadMic():
+	recognizer=sr.Recognizer()
+	try:
+		microphone=sr.Microphone()
+		return 1
+	except:
+		return 0
+			
 def listen(recognizer,input):
 	with input as source:
 		recognizer.adjust_for_ambient_noise(source,duration=0.5)
