@@ -1,6 +1,6 @@
 # paradise
-* Interactive:		q run.q
-* Non-interactive:	./run.sh
+* Interactive:		q paradise.q
+* Non-interactive:	./paradise.sh
 
 ##### run.q parameters
 * cli - specify if kdb+ is ran in foreground or background. Default 1
