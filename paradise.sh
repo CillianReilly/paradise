@@ -7,7 +7,7 @@ echo "Starting mic..."
 $QHOME/l32/q mic.q -cli 0 2>&1 >logs/mic.log &
 
 echo "Starting ngrok server..."
-/home/pi/Downloads/ngrok http -subdomain=paradise 5000 2>&1 >/dev/null &
+$NGROK_HOME/ngrok http -subdomain=paradise 5000 2>&1 >/dev/null &
 
 echo "Started"
 exit 0
