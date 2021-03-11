@@ -20,4 +20,5 @@ system"S ",string 7h$.z.t
 
 paradise:.nlp.utl.main
 
-if[ML;.ml.par.init[2000;0.001]] 
+if[ML;.ml.par.init[2000;0.001]]
+-1"Paradise start up complete" 
