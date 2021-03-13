@@ -1,6 +1,6 @@
-reminders:("ds**";enlist",")0:`:calendar/reminders.csv
-
 \d .cal
+
+utl.loadRmds:{0(set;`reminders;)("ds**";enlist",")0:`:calendar/reminders.csv;}
 
 utl.comp:{[fc;f;dc;d](fc in f)&{(x$/:y)~\:x$z}[;dc;d]$[f in`Y;`mm`dd;f in`M;`dd;`date]}
 utl.yearlyComp:utl.comp[;`Y;;]
@@ -17,5 +17,7 @@ utl.fmtRmds:{"Reminder: ",(", "sv"'s "sv/:flip x`name`reminder)," today"}
 
 utl.rmds:{r:utl.getRmds[];if[not count r;:()];utl.fmtRmds r}
 utl.sendRmd:{r:utl.rmds[];if[not count r;:"No reminders today"];.twl.pst.text r}
+
+utl.loadRmds[]
 
 \d .
