@@ -15,7 +15,7 @@
 * ngrok https://ngrok.com 
 ##### Calendar
 * Add reminders to calendar/reminders.csv
-* Freq is either Y(early) or M(onthly)
+* Freq is either Y(early),  M(onthly) or O(once off)
 ##### Spotify
 * Docs: https://developer.spotify.com/documentation/web-api
 * IDs available at: https://developer.spotify.com/dashboard/login
