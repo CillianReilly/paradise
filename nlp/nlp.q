@@ -36,7 +36,13 @@ cfg.cmd:(!). flip(
 			("make";`.nlp.spt.createPlaylist);
 			("create";`.nlp.spt.createPlaylist)
 			));
-	("playing";`.nlp.spt.playing)
+	("playing";`.nlp.spt.playing);
+	("reminders";(!). flip(
+			("get";`.nlp.cal.rmds);
+			("load";`.cal.utl.loadRmds);
+			("reload";`.cal.utl.loadRmds);
+			("reminders";`.nlp.cal.rmds)
+			))
 	)
 
 utl.days:("saturday";"sunday";"monday";"tuesday";"wednesday";"thursday";"friday");
@@ -44,6 +50,8 @@ utl.getCmd:{(not in[;0 11 100h]abs type@){y first key[y]inter x}[x]/cfg.cmd}
 utl.runCmd:{cmd:$[0`ML;.ml.par.getCmd raze x;utl.getCmd x];$[any cmd~/:`,"s*"$\:();"Unrecognized command ",raze x;cmd x]}
 utl.main:@[utl.runCmd;;{"Error running command: ",x}] -4!lower trim@
 utl.remove:{-4!trim ssr/[raze x;y;count[y]#""]}
+
+cal.rmds:{r:.cal.utl.rmds[];$[not count r;"No reminders today";r]}
 
 spt.restart:{.spt.put.seek 0}
 spt.next:{r:.spt.pst.next[];if[not"Success"~r;:r];system"sleep 1";spt.playing[]}
