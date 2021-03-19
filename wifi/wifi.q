@@ -6,7 +6,6 @@ utl.parseBrkt:{2{reverse min[1+x?"()"]_x}/x}
 utl.parseItem:{cfg.knownMAC utl.parseMAC x}
 
 utl.nmap:{
-	/This doesn't pick up Pi
 	cmd:"sudo nmap -F ",x,".0/",string y;
 	nmap:@[system;cmd;{enlist"Error running nmap: ",x}];
 	if[first[nmap]like"Error*";.log.err nmap;:()]
