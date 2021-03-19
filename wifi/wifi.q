@@ -54,6 +54,6 @@ utl.updDevices:{
         cfg.devices:dcv
         }
 
-utl.getDevices[];
+cfg.devices:utl.getDevices[]
 
 \d .
