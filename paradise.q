@@ -9,6 +9,7 @@ ML:1^first"J"$.Q.opt[.z.x]`ml
 \l weather/wx.q
 \l wolfram/wlf.q
 \l calendar/cal.q
+\l wifi/wifi.q
 \l ml/ml.q
 \l nlp/nlp.q
 \l init.q
