@@ -23,6 +23,7 @@ cfg.cmd:(!). flip(
 	("connection";`.nlp.utl.con);
 	("connected";`.nlp.utl.con);
 	("status";`.nlp.utl.con);
+	("home";`.nlp.wifi.devices);
 	("who";`.nlp.wlf.query);
 	("what";`.nlp.wlf.query);
 	("when";`.nlp.wlf.query);
@@ -158,4 +159,10 @@ utl.con:{c:.utl.con.chk[];$[c=200;"Internet connection ok";"Not connected, respo
 
 wlf.query:{.wlf.get.short raze x}
 
+wifi.devices:{
+	i:exec item from .wifi.cfg.devices where not item like"Wifi router";
+	if[not count i;:"No devices connected"];
+	"Connected devices: ",", "sv lower i
+	}
+	
 \d .
