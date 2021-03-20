@@ -22,15 +22,15 @@ utl.ifc:{
 utl.getDevices:{
 	ifc:utl.ifc[];
 	if[not count ifc;.log.err"Couldn't find inet and nmask";:()];
-	
+
 	mask:24*sum 0="J"$"."vs ifc"netmask";
 	inet:"."sv(neg mask div 24)_"."vs ifc"inet";
 	nmap:utl.nmap[inet;mask];
 	if[not count nmap;.log.err"Couldn't find nmap results";:()];
-	
+
 	mac:nmap where nmap like"MAC Address*";
 	if[not count mac;.log.err"Couldn't find any MAC addresses";:()];
-	
+
 	mac:utl[`parseMAC`parseBrkt`parseItem]@\:/:mac;
 	flip`MAC`name`item!flip mac
 	}
@@ -46,13 +46,13 @@ utl.logOld:{
 	}
 
 utl.updDevices:{
-        dcv:utl.getDevices[];
+	dcv:utl.getDevices[];
 
-        utl.logNew each dcv except cfg.devices;
-        utl.logOld each cfg.devices except dcv;
+	utl.logNew each dcv except cfg.devices;
+	utl.logOld each cfg.devices except dcv;
 
-        cfg.devices:dcv
-        }
+	cfg.devices:dcv
+	}
 
 cfg.devices:utl.getDevices[]
 
