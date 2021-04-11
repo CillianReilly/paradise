@@ -11,9 +11,17 @@ utl.sel:{?[x;enlist(y;`freq;`date;.z.d);0b;()]}
 utl.getYearly:utl.sel[;utl.yearlyComp]
 utl.getMonthly:utl.sel[;utl.monthlyComp]
 utl.getOnceOff:utl.sel[;utl.onceOffComp]
+utl.fmt:{enlist", "sv" "sv/:flip x}
 
 utl.getRmds:{raze utl[`getOnceOff`getMonthly`getYearly]@\:0`reminders}
-utl.fmtRmds:{"Reminder: ",(", "sv"'s "sv/:flip x`name`reminder)," today"}
+utl.fmtRmds:{
+	yrs:update years:string(-/)`year$(.z.d;date)from select from x where freq in`Y;
+	n:x except enlist[`years]_yrs;
+	r:enlist"Reminder: ";
+	if[count yrs;r:r,utl.fmt yrs`reminder`name`years];
+	if[count n;r:r,utl.fmt n`name`reminder];
+	first[r],", "sv 1_r
+	}
 
 utl.rmds:{r:utl.getRmds[];if[not count r;:()];utl.fmtRmds r}
 utl.sendRmd:{r:utl.rmds[];if[not count r;:"No reminders today"];.twl.pst.text r}
