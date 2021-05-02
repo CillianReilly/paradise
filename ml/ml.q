@@ -64,6 +64,7 @@ par.trn:{[ep;lr]
 
 par.init:{[ep;lr]
 	if[not count par.data;ML::0;:"No training data"];
+	.log.out"Training ML model with ",string[ep]," iterations and learning rate ",string lr;
 	wb:par.trn[ep;lr];
 	par.wb:wb;
 	par.predict:net.predict wb;
