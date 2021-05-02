@@ -32,7 +32,7 @@ utl.getDevices:{
 	if[not count mac;.log.err"Couldn't find any MAC addresses";:()];
 
 	mac:utl[`parseMAC`parseBrkt`parseItem]@\:/:mac;
-	flip`MAC`name`item!flip mac
+	update item:name from(flip`MAC`name`item!flip mac)where 0=count each item
 	}
 
 utl.logNew:{
