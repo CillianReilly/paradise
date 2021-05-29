@@ -6,5 +6,4 @@ if [ $# -ge 2 ];then
 	exit 1
 fi
 
-echo "Running Paradise command: $1"
 $QHOME/l32/q rrc.q -port 5000 -cmd "paradise\"$1\"" -q
