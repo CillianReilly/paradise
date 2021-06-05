@@ -6,4 +6,7 @@ if [ $# -ge 2 ];then
 	exit 1
 fi
 
-$QHOME/l32/q rrc.q -port 5000 -cmd "paradise\"$1\"" -q
+echo "Setting environment variables from paradise.cfg..."
+PORT=$(grep PORT paradise.cfg | cut -d "=" -f2)
+
+$QHOME/l32/q rrc.q -port $PORT -cmd "paradise\"$1\"" -q
