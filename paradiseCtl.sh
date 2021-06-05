@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z $1 ];then
+	echo "Usage: ./$(basename $0) cmd"
+	exit 1
+fi
+
 if [ $# -ge 2 ];then
 	echo "Commands containing a space must be wrapped in quotes"
 	echo "Usage: ./$(basename $0) \"$@\""
