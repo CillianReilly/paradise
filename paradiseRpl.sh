@@ -1,2 +1,6 @@
 #!/bin/bash
-$QHOME/l32/q rpl.q -port 5000 -host localhost
+
+echo "Setting environment variables from paradise.cfg..."
+PORT=$(grep PORT paradise.cfg | cut -d "=" -f2)
+
+$QHOME/l32/q rpl.q -port $PORT -host localhost

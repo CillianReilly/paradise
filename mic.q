@@ -2,6 +2,7 @@
 \l mic.p
 \l logs/log.q
 
+paradise:first"J"$.Q.opt[.z.x]`port
 loadMic:.p.get`loadMic
 mic:@[.p.get`mic;;"Couldn't understand"]
 speak:.p.get`speak
@@ -14,7 +15,7 @@ run:{
 	}
 
 init:{
-	h:@[hopen;5000;{.log.err"Couldn't connect to Paradise, exiting...";exit 1}];
+	h:@[hopen;x;{.log.err"Couldn't connect to Paradise, exiting...";exit 1}];
 	if[0=loadMic[]`;.log.err"Mic not available: either not connected or already in use";exit 1];	
 	
 	d:`s#0 12 17!("morning";"afternoon";"evening");
@@ -23,4 +24,4 @@ init:{
 	}
 
 .log.out"Starting mic"
-init[]
+init[paradise]
