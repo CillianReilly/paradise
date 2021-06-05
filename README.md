@@ -3,7 +3,7 @@
 * Non-interactive:	./paradise.sh
 
 ##### run.q parameters
-* cli - specify if kdb+ is ran in foreground or background. Default 1
+* cli - specify if kdb+ is ran in foreground or background. Default 0
 * ml - use machine learning model to predict commands. Default 1
 
 ##### Requirements
