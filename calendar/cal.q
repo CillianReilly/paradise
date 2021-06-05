@@ -23,8 +23,11 @@ utl.fmtRmds:{
 	first[r],", "sv 1_r
 	}
 
-utl.rmds:{r:utl.getRmds x;if[not count r;:()];utl.fmtRmds r}
-utl.sendRmd:{r:utl.rmds x;if[not count r;:"No reminders today"];.twl.pst.text r}
+utl.sendRmd:{
+	r:utl.getRmds x;
+	if[not count r;:"No reminders today"];
+	.twl.pst.txt utl.fmtRmds r
+	}	
 
 utl.loadRmds[]
 
