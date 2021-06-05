@@ -17,8 +17,7 @@ git diff *
 git add .
 read -p "Enter commit message: " MESSAGE
 while [ -z "$MESSAGE" ]
-	do echo "Enter a non empty commit message"
-	read MESSAGE
+	do read -p "Emter a non empty commit message: " MESSAGE
 done
 git commit -m "$MESSAGE"
 git push -u origin newBranch
