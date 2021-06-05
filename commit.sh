@@ -23,7 +23,7 @@ done
 git commit -m "$MESSAGE"
 git push -u origin newBranch
 read -p "Has the request been merged? Enter Y to proceed: " MERGED
-while [[ -z "$MESSAGE" || ! "$MERGED" == "Y" ]]
+while [[ -z "$MERGED" || ! "$MERGED" == "Y" ]]
 	do read -p "Has the request been merged? Enter Y to proceed: " MERGED
 done
 git checkout master
