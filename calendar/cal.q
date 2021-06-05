@@ -13,6 +13,16 @@ utl.getMonthly:utl.sel[;utl.monthlyComp]
 utl.getOnceOff:utl.sel[;utl.onceOffComp]
 utl.fmt:{enlist", "sv" "sv/:flip x}
 
+utl.addRmd:{[d;f;n;r]
+        `:calendar/reminders.csv 0: csv 0:(0`reminders)upsert(d;f;n;r);
+        utl.loadRmds[]
+        }
+
+utl.delOnceOff:{
+	`:calendar/reminders.csv 0: csv 0:delete from x where freq in`O,date<.z.d;
+	utl.loadRmds[]
+	}
+
 utl.getRmds:{raze utl[`getOnceOff`getMonthly`getYearly]@\:x}
 utl.fmtRmds:{
 	yrs:update years:string(-/)`year$(.z.d;date)from select from x where freq in`Y;
@@ -26,6 +36,7 @@ utl.fmtRmds:{
 utl.sendRmd:{
 	r:utl.getRmds x;
 	if[not count r;:"No reminders today"];
+	utl.delOnceOff x;
 	.twl.pst.txt utl.fmtRmds r
 	}	
 
