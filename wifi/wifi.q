@@ -32,26 +32,30 @@ utl.getDevices:{
 	if[not count mac;.log.err"Couldn't find any MAC addresses";:()];
 
 	mac:utl[`parseMAC`parseBrkt`parseItem]@\:/:mac;
-	update item:name from(flip`MAC`name`item!flip mac)where 0=count each item
+	mac:update lastActive:.z.p from flip`MAC`name`item!flip mac;
+	`MAC xkey update item:name from mac where 0=count each item
 	}
 
 utl.logNew:{
-	.log.out"New MAC registered: ",string x`MAC;
-	.log.out x[`item]," has connected to the wifi";
+	.log.out"New MAC registered: ",string x;
+	.log.out $[""~i:cfg.knownMAC[x];"Unknown item";i]," has connected to the wifi";
 	}
 
 utl.logOld:{
-	.log.out"MAC unregistered: ",string x`MAC;
-	.log.out x[`item]," has disconnected from the wifi";
+	.log.out"MAC unregistered: ",string x;
+	.log.out $[""~i:cfg.knownMAC[x];"Unknown item";i]," has disconnected from the wifi";
 	}
 
 utl.updDevices:{
 	dcv:utl.getDevices[];
 
-	utl.logNew each dcv except cfg.devices;
-	utl.logOld each cfg.devices except dcv;
+	new:exec MAC from dcv;
+	old:exec MAC from cfg.devices where not MAC in new,9<`minute$.z.p-lastActive;	
 
-	cfg.devices:dcv
+	utl.logNew each new except exec MAC from cfg.devices;
+	utl.logOld each old;
+
+	cfg.devices:upsert[;dcv]delete from cfg.devices where MAC in old;
 	}
 
 cfg.devices:utl.getDevices[]
