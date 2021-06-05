@@ -162,7 +162,7 @@ wlf.query:{.wlf.get.short raze x}
 wifi.devices:{
 	i:exec item from .wifi.cfg.devices where not item like"Wifi router";
 	if[not count i;:"No devices connected"];
-	"Connected devices: ",", "sv lower i
+	"Connected devices: ",", "sv i
 	}
 	
 \d .
