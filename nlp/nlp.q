@@ -52,7 +52,7 @@ utl.runCmd:{cmd:$[0`ML;.ml.par.getCmd raze x;utl.getCmd x];$[any cmd~/:`,"s*"$\:
 utl.main:@[utl.runCmd;;{"Error running command: ",x}] -4!lower trim@
 utl.remove:{-4!trim ssr/[raze x;y;count[y]#""]}
 
-cal.rmds:{r:.cal.utl.rmds[];$[not count r;"No reminders today";r]}
+cal.rmds:{r:.cal.utl.rmds 0`reminders;$[not count r;"No reminders today";r]}
 
 spt.restart:{.spt.put.seek 0}
 spt.next:{r:.spt.pst.next[];if[not"Success"~r;:r];system"sleep 1";spt.playing[]}
