@@ -1,6 +1,7 @@
 \d .cal
 
-utl.loadRmds:{0(set;`reminders;)("ds**";enlist",")0:`:calendar/reminders.csv;}
+utl.reminders:`:calendar/reminders.csv
+utl.loadRmds:{0(set;`reminders;)("ds**";enlist",")0:x;}
 
 utl.comp:{[fc;f;dc;d](fc in f)&{(x$/:y)~\:x$z}[;dc;d]$[f in`Y;`mm`dd;f in`M;`dd;`date]}
 utl.yearlyComp:utl.comp[;`Y;;]
@@ -13,14 +14,14 @@ utl.getMonthly:utl.sel[;utl.monthlyComp]
 utl.getOnceOff:utl.sel[;utl.onceOffComp]
 utl.fmt:{enlist", "sv" "sv/:flip x}
 
-utl.addRmd:{[d;f;n;r]
-	`:calendar/reminders.csv 0: csv 0:(0`reminders)upsert(d;f;n;r);
-	utl.loadRmds[]
+utl.addRmd:{[p;d;f;n;r]
+	p 0: csv 0:(0`reminders)upsert(d;f;n;r);
+	utl.loadRmds p
 	}
 
 utl.delOnceOff:{
-	`:calendar/reminders.csv 0: csv 0:delete from x where freq in`O,date<.z.d;
-	utl.loadRmds[]
+	x 0: csv 0:delete from x where freq in`O,date<.z.d;
+	utl.loadRmds x
 	}
 
 utl.getRmds:{raze utl[`getOnceOff`getMonthly`getYearly]@\:x}
@@ -40,6 +41,6 @@ utl.sendRmd:{
 	.twl.pst.txt utl.fmtRmds r
 	}	
 
-utl.loadRmds[]
+utl.loadRmds utl.reminders
 
 \d .
