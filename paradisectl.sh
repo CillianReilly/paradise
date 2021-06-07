@@ -10,6 +10,11 @@ PORT=$(grep PORT paradise.cfg | cut -d "=" -f2)
 
 if [ $# -eq 0 ];then
 	rlwrap -r $QHOME/l32/q rpl.q -port $PORT
-else
-	$QHOME/l32/q rrc.q -port $PORT -cmd "paradise\"$1\"" -q
+	exit 0
 fi
+
+case $1 in
+	start)	./start.sh;;
+	stop)	./stop.sh;;
+	*)	$QHOME/l32/q rrc.q -port $PORT -cmd "paradise\"$1\"" -q;;
+esac
