@@ -14,7 +14,8 @@ if [ $# -eq 0 ];then
 fi
 
 case $1 in
-	start)	./start.sh;;
-	stop)	./stop.sh;;
-	*)	$QHOME/l32/q rrc.q -port $PORT -cmd "paradise\"$1\"" -q;;
+	start)	  ./start.sh;;
+	stop)	  ./stop.sh;;
+	restart)  ./stop.sh && sleep 1 && ./start.sh;;
+	*)	  $QHOME/l32/q rrc.q -port $PORT -cmd "paradise\"$1\"" -q;;
 esac
