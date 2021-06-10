@@ -3,8 +3,8 @@
 PORT=$(grep PORT paradise.cfg | cut -d "=" -f2)
 
 if [ $# -eq 0 ];then
-        rlwrap -r $QHOME/l32/q rpl.q -port $PORT
-        exit 0
+	rlwrap -r $QHOME/l32/q rpl.q -port $PORT
+	exit 0
 fi
 
 if [ $# -ge 2 ];then
