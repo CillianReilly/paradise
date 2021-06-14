@@ -56,9 +56,9 @@ cal.rmds:{r:.cal.utl.rmds 0`reminders;$[not count r;"No reminders today";r]}
 cal.loadRmds:{.cal.utl.loadRmds .cal.utl.reminders}
 
 spt.restart:{.spt.put.seek 0}
-spt.next:{r:.spt.pst.next[];if[not"Success"~r;:r];system"sleep 1";spt.playing[]}
-spt.prev:{r:.spt.pst.prev[];if[not"Success"~r;:r];system"sleep 1";spt.playing[]}
-spt.rand:{r:.spt.put.rand[];if[not"Success"~r;:r];system"sleep 1";spt.playing[]}
+spt.next:{r:.spt.pst.next[];if[not"Success"~r;:r];system"sleep 2";spt.playing[]}
+spt.prev:{r:.spt.pst.prev[];if[not"Success"~r;:r];system"sleep 2";spt.playing[]}
+spt.rand:{r:.spt.put.rand[];if[not"Success"~r;:r];system"sleep 2";spt.playing[]}
 spt.shuffle:{
 	if[x~enlist"shuffle";:"Shuffle is ",("off";"on").spt.get.shuffle[]];
 	.spt.put.shuffle x 2+x?"shuffle"
@@ -103,7 +103,7 @@ spt.radio:{.spt.utl.radio . spt.getSearchTerms[x;"radio"]}
 spt.play:{
 	if[x~enlist"play";:.spt.put.resume[]];
 	r:.spt.utl.play . spt.getSearchTerms[x;"play"];
-	if[not"Success"~r;:r];system"sleep 1";
+	if[not"Success"~r;:r];system"sleep 2";
 	spt.playing[]
 	}
 
