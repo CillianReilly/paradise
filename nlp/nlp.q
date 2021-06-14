@@ -40,7 +40,7 @@ cfg.cmd:(!). flip(
 	("playing";`.nlp.spt.playing);
 	("reminders";(!). flip(
 			("get";`.nlp.cal.rmds);
-			("load";`nlp.cal.loadRmds);
+			("load";`.nlp.cal.loadRmds);
 			("reload";`.nlp.cal.loadRmds);
 			("reminders";`.nlp.cal.rmds)
 			))
