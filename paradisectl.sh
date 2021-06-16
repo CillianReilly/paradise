@@ -1,9 +1,9 @@
 #!/bin/bash
 
-PORT=$(grep PORT paradise.cfg | cut -d "=" -f2)
+PORT=$(grep PORT $PHOME/paradise.cfg | cut -d "=" -f2)
 
 if [ $# -eq 0 ];then
-	rlwrap -r $QHOME/l32/q rpl.q -port $PORT
+	rlwrap -r $QHOME/l32/q $PHOME/rpl.q -port $PORT
 	exit 0
 fi
 
@@ -14,8 +14,8 @@ else
 fi
 
 case $CMD in
-	start)	  ./start.sh;;
-	stop)	  ./stop.sh;;
-	restart)  ./stop.sh && sleep 1 && ./start.sh;;
-	*)	  $QHOME/l32/q rrc.q -port $PORT -cmd "paradise\"$CMD\"" -q;;
+	start)	  $PHOME/start.sh;;
+	stop)	  $PHOME/stop.sh;;
+	restart)  $PHOME/stop.sh && sleep 1 && ./start.sh;;
+	*)	  $QHOME/l32/q $PHOME/rrc.q -port $PORT -cmd "paradise\"$CMD\"" -q;;
 esac
