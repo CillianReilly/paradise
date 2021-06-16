@@ -1,8 +1,8 @@
 # paradise
-* Interactive:		./paradisectl.sh
-* Non-interactive:	./paradisectl.sh start
+* Interactive:		$PHOME/paradisectl.sh
+* Non-interactive:	$PHOME/paradisectl.sh start
 
-Specify [PQ]HOME in your .bashrc or equivalent
+Specify PHOME in your .bashrc or equivalent
 
 ##### run.q parameters
 * cli - specify if kdb+ is ran in foreground or background. Default 0
