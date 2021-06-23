@@ -2,7 +2,11 @@
 \l logs/log.q
 \d .tst
 
-utl.true:{if[not x;.log.err y];x}
+utl.true:{
+	if[not -1 10h~type each(x;y);.log.err"utl.true: Incorrect argument types: ",", "sv string type each(x;y);:0b];
+	if[not x;.log.err y];
+	x
+	}
 utl.logTestInfo:{.log.out"Running ",string[x]," unit test(s)..."}
 utl.nsFuncs:{x where 100=('[type;value])each x:` sv'x,'1_key x}
 utl.testDic:{x!count[x]#0b}
