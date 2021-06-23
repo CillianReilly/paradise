@@ -22,11 +22,6 @@ utl.loadTests:{
 	system each"l ",/:(1_string x),/:"/",/:string f;
 	}
 
-utl.testVars:{
-	k:key[x]except`;
-	utl.true[k~y;string[x]," variable(s) not defined: ",", "sv string utl.compVars[k;y]]
-	}
-
 utl.test:{
 	t:` sv x,`tests;
 	utl.createTests[x;t];
@@ -43,6 +38,21 @@ utl.checkResults:{
 		[.log.out"All unit tests passing";exit 0];
 		[.log.err"Number of failed tests: ",string 2 sum/not results;exit 1]
 	]}
+
+utl.testVars:{
+        k:key[x]except`;
+        utl.true[k~y;string[x]," variable(s) not defined: ",", "sv string utl.compVars[k;y]]
+        }
+
+utl.testOutput:{
+	out:x each y;
+	utl.true[out~z;utl.outputDiff[x;out;z]]
+	}
+
+utl.outputDiff:{
+	d:", "sv/:(y;z)@\:where not y~'z;
+	string[x]," does not have expected output(s): expected: [",(d 0),"], got: [",(d 1),"]"
+	}
 
 utl.loadTests`:tests
 utl.modules:key[`.tst]except``utl
