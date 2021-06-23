@@ -6,9 +6,9 @@ def loadMic():
 	recognizer=sr.Recognizer()
 	try:
 		microphone=sr.Microphone()
-		return 1
-	except:
 		return 0
+	except:
+		return 1
 			
 def listen(recognizer,input):
 	with input as source:
