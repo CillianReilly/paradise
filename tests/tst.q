@@ -53,10 +53,15 @@ utl.outputDiff:{
 	string[x]," does not have expected output(s): expected: [",(d 0),"], got: [",(d 1),"]"
 	}
 
-utl.loadTests`:tests
-utl.modules:key[`.tst]except``utl
-.log.out"Starting unit tests..."
-utl.test each utl.modules;
-utl.checkResults utl.modules
+utl.init:{
+	utl.loadTests`:tests;
+	modules:key[`.tst]except``utl;
+	.log.out"Starting unit tests...";
+	utl.test each modules;
+	utl.checkResults modules
+	}
+
+
+utl.init[]
 
 \d .
