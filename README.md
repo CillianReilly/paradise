@@ -7,6 +7,7 @@ Specify PHOME in your .bashrc or equivalent
 
 ##### Parameters
 * cli - specify if kdb+ is ran in foreground or background. Default 0
+* mic - specify to start mic. Default 1
 * ml - use machine learning model to predict commands. Default 1
 
 ##### Requirements
