@@ -48,7 +48,7 @@ done
 git commit -m "$MESSAGE"
 git push -u origin $BRANCH
 
-if [ $BRANCH -eq master ];then
+if [ $BRANCH == master ];then
 	echo "Finished commit to master branch"
 	exit 0
 fi
