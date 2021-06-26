@@ -58,6 +58,4 @@ utl.updDevices:{
 	cfg.devices:upsert[;dcv]delete from cfg.devices where MAC in old;
 	}
 
-cfg.devices:utl.getDevices[]
-
 \d .
