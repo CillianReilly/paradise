@@ -59,12 +59,11 @@ utl.outputDiff:{
 
 utl.init:{
 	utl.loadTests`:tests;
-	modules:key[`.tst]except``utl;
+	modules:asc key[`.tst]except``utl;
 	.log.out"Starting unit tests...";
 	utl.test each modules;
 	utl.checkResults modules
 	}
-
 
 utl.init[]
 
