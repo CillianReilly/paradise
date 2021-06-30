@@ -1,7 +1,7 @@
 # paradise
 * Interactive:		$PHOME/paradisectl.sh
 * Non-interactive:	$PHOME/paradisectl.sh start
-* Test:			$PHOME/tests.sh
+* Test:			$PHOME/test.sh
 
 Specify PHOME in your .bashrc or equivalent
 

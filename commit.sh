@@ -17,7 +17,7 @@ done
 
 if [ ! -z $TEST ];then
 	echo "Running unit tests"
-	$PHOME/tests.sh | cut -c 40-
+	$PHOME/test.sh | cut -c 40-
 	if [ ${PIPESTATUS[0]} -eq 1 ];then
 		echo "Unit tests failed, aborting commit"
 		exit 1
