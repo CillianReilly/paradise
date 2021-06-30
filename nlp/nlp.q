@@ -53,7 +53,7 @@ utl.main:@[utl.runCmd;;{"Error running command: ",x}] -4!lower trim@
 utl.remove:{-4!trim ssr/[raze x;y;count[y]#""]}
 
 cal.rmds:{r:.cal.utl.rmds 0`reminders;$[not count r;"No reminders today";r]}
-cal.loadRmds:{.cal.utl.loadRmds .cal.utl.reminders}
+cal.loadRmds:{.cal.utl.loadRmds .cal.utl.reminders;"Success"}
 
 spt.restart:{.spt.put.seek 0}
 spt.next:{r:.spt.pst.next[];if[not"Success"~r;:r];system"sleep 2";spt.playing[]}
