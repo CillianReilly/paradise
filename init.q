@@ -12,6 +12,13 @@ gbl.timer:{
 
 \d .
 
+.z.pp:.twl.pst.callback
+.z.ts:.par.gbl.timer
+system"t 60000"
+system"S ",string 7h$.z.t
+\x .z.ph
+
+
 c:@[.utl.con.chk;[];0]
 -1"Internet connection",$[200=c;"";" not"]," ok: response code was ",string c;
 

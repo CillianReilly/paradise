@@ -14,12 +14,6 @@ ML:1^first"J"$.Q.opt[.z.x]`ml
 \l nlp/nlp.q
 \l init.q
 
-.z.pp:.twl.pst.callback
-.z.ts:.par.gbl.timer
-system"t 60000"
-system"S ",string 7h$.z.t
-\x .z.ph
-
 paradise:.nlp.utl.main
 
 if[ML;.ml.par.init[2000;0.001]]
