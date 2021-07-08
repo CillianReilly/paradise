@@ -17,7 +17,7 @@ done
 
 if [ ! -z $TEST ];then
 	echo "Running unit tests"
-	$PHOME/test.sh | cut -c 40-
+	$PHOME/test.sh |awk '{print "["substr($0,32,3)"]: "substr($0,40,100)}'
 	if [ ${PIPESTATUS[0]} -eq 1 ];then
 		echo "Unit tests failed, aborting commit"
 		exit 1
