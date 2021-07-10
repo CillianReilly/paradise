@@ -37,10 +37,13 @@ utl.test:{
 
 utl.checkResults:{
 	results:value each` sv/:x,'`tests;
-	$[2 all/results;
-		[.log.out"All unit tests passing";exit 0];
-		[.log.err"Number of failed tests: ",string 2 sum/not results;exit 1]
-	]}
+	pass:2 all/results;
+	$[pass;
+		.log.out"All unit tests passing";
+		.log.err"Number of failed tests: ",string 2 sum/not results
+	]
+	exit not pass
+	}
 
 utl.testVars:{
         k:key[x]except`;
