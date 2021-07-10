@@ -2,7 +2,7 @@
 \l logs/log.q
 \d .tst
 
-cfg.dbg:`dbg in key .Q.opt .z.X
+utl.dbg:`dbg in key .Q.opt .z.X
 
 utl.true:{
 	if[not -1 10h~type each(x;y);.log.err"utl.true: Incorrect argument types: ",", "sv string type each(x;y);:0b];
@@ -44,7 +44,7 @@ utl.checkResults:{
 		.log.out"All unit tests passing";
 		.log.err"Number of failed tests: ",string 2 sum/not results
 	]
-	if[not cfg.dbg;exit not pass]
+	if[not utl.dbg;exit not pass]
 	}
 
 utl.testVars:{
