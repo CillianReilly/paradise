@@ -8,5 +8,5 @@ async:(`async in key params)or any cmd like/:("*\\\\*";"*exit *")
 handle:(1 -1 async)*@[hopen;addr;{-1"Couldn't connect to ",string[y],": ",x;exit 1}[;addr]];
 r:handle cmd;if[async;handle[]]
 
--1 $[10=abs type r;r;.Q.s1 r];
+if[not async;-1 $[10=abs type r;r;.Q.s1 r]];
 exit 0
