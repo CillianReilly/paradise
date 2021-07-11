@@ -3,6 +3,7 @@
 utl.toDo:`:calendar/toDo.csv
 utl.loadToDo:{0(set;`toDo;)first("* ";",")0:x;}
 utl.getToDo:", "sv
+utl.addToDo:{x 0: y,enlist z;utl.loadToDo x;}
 
 utl.reminders:`:calendar/reminders.csv
 utl.loadRmds:{0(set;`reminders;)("ds**";enlist",")0:x;}

@@ -44,7 +44,10 @@ cfg.cmd:(!). flip(
 			("reload";`.nlp.cal.load);
 			("reminders";`.nlp.cal.rmds)
 			));
-	("todo";`.nlp.cal.toDo)
+	("todo";(!). flip(
+			("add";`.nlp.cal.addToDo);
+			("todo";`.nlp.cal.toDo)
+			))
 	)
 
 utl.days:("saturday";"sunday";"monday";"tuesday";"wednesday";"thursday";"friday");
@@ -53,9 +56,14 @@ utl.runCmd:{cmd:$[0`ML;.ml.par.getCmd raze x;utl.getCmd x];$[any cmd~/:`,"s*"$\:
 utl.main:@[utl.runCmd;;{"Error running command: ",x}] -4!lower trim@
 utl.remove:{-4!trim ssr/[raze x;y;count[y]#""]}
 
-cal.toDo:{r:.cal.utl.getToDo 0`toDo;$[not count r;"Nothing to do, go fishin!";r]}
-cal.rmds:{r:.cal.utl.rmds 0`reminders;$[not count r;"No reminders today";r]}
 cal.load:{.cal.utl.init[];"Success"}
+cal.rmds:{r:.cal.utl.rmds 0`reminders;$[not count r;"No reminders today";r]}
+cal.toDo:{r:.cal.utl.getToDo 0`toDo;$[not count r;"Nothing to do, go fishin!";r]}
+cal.addToDo:{
+	x:trim raze x where not x in\:("add";"todo");
+	.cal.utl.addToDo[.cal.utl.toDo;0`toDo;x];
+	cal.toDo[]
+	}
 
 spt.restart:{.spt.put.seek 0}
 spt.next:{r:.spt.pst.next[];if[not"Success"~r;:r];system"sleep 2";spt.playing[]}
