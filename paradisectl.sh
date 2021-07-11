@@ -16,6 +16,6 @@ fi
 case $CMD in
 	start)	  $PHOME/start.sh;;
 	stop)	  $PHOME/stop.sh;;
-	restart)  $PHOME/stop.sh && sleep 1 && ./start.sh;;
+	restart)  $PHOME/stop.sh && sleep 1 && $PHOME/start.sh;;
 	*)	  $QHOME/l32/q $PHOME/rrc.q -port $PORT -cmd "paradise\"$CMD\"" -q;;
 esac
