@@ -2,7 +2,7 @@
 
 utl.toDo:`:calendar/toDo.csv
 utl.loadToDo:{0(set;`toDo;)first("* ";",")0:x;}
-utl.getToDo:{$[count x;", "sv x;"Nothing to do, go fishin'"]}
+utl.getToDo:", "sv
 
 utl.reminders:`:calendar/reminders.csv
 utl.loadRmds:{0(set;`reminders;)("ds**";enlist",")0:x;}
