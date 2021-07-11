@@ -58,7 +58,9 @@ utl.testOutput:{
 	}
 
 utl.outputDiff:{
-	d:", "sv/:(y;z)@\:where not y~'z;
+	d:(y;z)@\:where not y~'z;
+	if[10<>abs first type each z;d:string d];
+	d:", "sv/:d;
 	string[x]," does not have expected output(s): expected: [",(d 0),"], got: [",(d 1),"]"
 	}
 
