@@ -1,5 +1,9 @@
 \d .cal
 
+utl.toDo:`:calendar/toDo.csv
+utl.loadToDo:{0(set;`toDo;)first("* ";",")0:x;}
+utl.getToDo:{$[count x;", "sv x;"Nothing to do, go fishin'"]}
+
 utl.reminders:`:calendar/reminders.csv
 utl.loadRmds:{0(set;`reminders;)("ds**";enlist",")0:x;}
 
@@ -37,6 +41,11 @@ utl.fmtRmds:{
 utl.rmds:{r:utl.getRmds x;if[not count r;:()];utl.fmtRmds r}
 utl.sendRmd:{r:utl.rmds x;if[not count r;:"No reminders today"];.twl.pst.text r}
 
-utl.loadRmds utl.reminders
+utl.init:{
+	utl.loadRmds utl.reminders;
+	utl.loadToDo utl.toDo
+	}
+	
+utl.init[]
 
 \d .
