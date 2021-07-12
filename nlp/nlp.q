@@ -46,6 +46,7 @@ cfg.cmd:(!). flip(
 			));
 	("todo";(!). flip(
 			("add";`.nlp.cal.addToDo);
+			("remove";`.nlp.cal.rmToDo);
 			("todo";`.nlp.cal.toDo)
 			))
 	)
@@ -62,6 +63,11 @@ cal.toDo:{r:.cal.utl.getToDo 0`toDo;$[not count r;"Nothing to do, go fishin!";r]
 cal.addToDo:{
 	x:trim raze x where not x in\:("add";"todo");
 	.cal.utl.addToDo[.cal.utl.toDo;0`toDo;x];
+	cal.toDo[]
+	}
+cal.rmToDo:{
+	x:trim raze x where not x in\:("remove";"todo");
+	.cal.utl.rmToDo[.cal.utl.toDo;0`toDo;x];
 	cal.toDo[]
 	}
 
