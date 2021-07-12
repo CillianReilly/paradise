@@ -43,7 +43,7 @@ utl.checkResults:{
 	$[pass;
 		.log.out"All unit tests passing";
 		.log.err"Number of failed tests: ",string 2 sum/not results
-	]
+	];
 	if[not utl.dbg;exit not pass]
 	}
 
@@ -58,7 +58,7 @@ utl.testOutput:{
 	}
 
 utl.outputDiff:{
-	d:(y;z)@\:where not y~'z;
+	d:(y;z)@\:where not(~').(),/:(y;z);
 	if[10<>abs first type each z;d:string d];
 	d:", "sv/:d;
 	string[x]," does not have expected output(s): expected: [",(d 0),"], got: [",(d 1),"]"
