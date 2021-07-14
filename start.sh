@@ -14,7 +14,7 @@ $NGROK_HOME/ngrok http -subdomain=paradise $PORT 2>&1 >/dev/null &
 
 if [ $MIC ];then
 	echo "Starting mic..."
-	$QHOME/l32/q $PHOME/mic.q -port $PORT -cli $CLI 2>&1 >logs/mic.log &
+	$QHOME/l32/q $PHOME/mic.q -port $PORT -cli $CLI 2>&1 >$PHOME/logs/mic.log &
 fi
 
 echo "Started"
