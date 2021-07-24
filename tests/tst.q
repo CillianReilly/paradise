@@ -52,6 +52,10 @@ utl.testVars:{
         utl.true[k~y;string[x]," variable(s) not defined: ",", "sv string utl.compVars[k;y]]
         }
 
+utl.testRootVars:{
+	utl.true[all v;"Root variables not defined: ",", "sv string x where not v:in[;key`.]x,:()]
+	}
+
 utl.testOutput:{
 	out:x each y;
 	utl.true[out~z;utl.outputDiff[x;out;z]]
