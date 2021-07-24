@@ -14,7 +14,7 @@ utl.nsFuncs:{x where 100=('[type;value])each x:` sv'x,'1_key x}
 utl.testDic:{x!count[x]#0b}
 utl.createTests:{y set utl.testDic utl.nsFuncs x}
 utl.runTests:{x set f!utl.pex each f:key x}
-utl.compVars:{raze(x;y)except\:x inter y}
+utl.compVars:{raze(x;y)except\:x inter y:(),y}
 
 utl.pex:{
 	@[value x;[];
