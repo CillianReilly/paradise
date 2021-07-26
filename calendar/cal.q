@@ -26,7 +26,7 @@ utl.addRmd:{[p;d;f;n;r]
 	}
 
 utl.delOnceOff:{
-	x 0: csv 0:delete from x where freq in`O,date<.z.d;
+	x 0: csv 0:delete from(0`reminders) where freq in`O,date<.z.d;
 	utl.loadRmds x
 	}
 
@@ -41,7 +41,12 @@ utl.fmtRmds:{
 	}
 
 utl.rmds:{r:utl.getRmds x;if[not count r;:()];utl.fmtRmds r}
-utl.sendRmd:{r:utl.rmds x;if[not count r;:"No reminders today"];.twl.pst.text r}
+utl.sendRmd:{
+	r:utl.rmds x;
+	utl.delOnceOff utl.reminders;
+	if[not count r;:"No reminders today"];
+	.twl.pst.text r
+	}
 
 utl.init:{
 	utl.loadRmds utl.reminders;
