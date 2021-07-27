@@ -7,7 +7,7 @@ utl.addToDo:{x 0: y,enlist z;utl.loadToDo x;utl.loadToDo utl.toDo;}
 utl.rmToDo:{x 0: y where not all each y like/:\:{"*",x,"*"}each" "vs z;utl.loadToDo utl.toDo;}
 
 utl.reminders:`:calendar/reminders.csv
-utl.loadRmds:{0(set;`reminders;)("ds**";enlist",")0:x;}
+utl.loadRmds:{0(set;`reminders;)("ds*";enlist",")0:x;}
 
 utl.comp:{[fc;f;dc;d](fc in f)&{(x$/:y)~\:x$z}[;dc;d]$[f in`Y;`mm`dd;f in`M;`dd;`date]}
 utl.yearlyComp:utl.comp[;`Y;;]
@@ -35,8 +35,8 @@ utl.fmtRmds:{
 	yrs:update years:string(-/)`year$(.z.d;date)from select from x where freq in`Y;
 	n:x except enlist[`years]_yrs;
 	r:enlist"Reminder: ";
-	if[count yrs;r:r,utl.fmt yrs`reminder`name`years];
-	if[count n;r:r,utl.fmt n`name`reminder];
+	if[count yrs;r:r,utl.fmt yrs`reminder`years];
+	if[count n;r:r,enlist", "sv n`reminder];
 	first[r],", "sv 1_r
 	}
 
