@@ -32,7 +32,11 @@ if [ $BRANCH == master ];then
 	echo "Committing to master branch..."
 else
 	echo "Committing to $BRANCH..."
-	git checkout -b $BRANCH
+	if [[ $(git branch --list $BRANCH) ]];then
+		git checkout $BRANCH
+	else
+		git checkout -b $BRANCH
+	fi
 fi
 
 for i in $@;
