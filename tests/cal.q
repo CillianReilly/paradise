@@ -8,10 +8,7 @@ cal.utlVars:{utl.testVars[`.cal.utl;`toDo`loadToDo`getToDo`addToDo`rmToDo`remind
 cal.toDoCsv:{utl.testFile`:calendar/toDo.csv}
 cal.remindersCsv:{utl.testFile`:calendar/reminders.csv}
 
-cal.loadToDo:{
-	utl.testOutput[`.cal.utl.loadToDo;
-		.cal.utl.toDo;
-		(::)
-	]}
+cal.loadToDo:{utl.testOutput[`.cal.utl.loadToDo;.cal.utl.toDo;(::)]}
+cal.loadRmds:{utl.testOutput[`.cal.utl.loadRmds;.cal.utl.reminders;(::)]}
 
 \d .
