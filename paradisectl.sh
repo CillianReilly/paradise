@@ -14,9 +14,9 @@ else
 fi
 
 case $CMD in
-	start)	  $PHOME/start.sh;;
-	stop)	  $PHOME/stop.sh;;
-	restart)  $PHOME/stop.sh && sleep 1 && $PHOME/start.sh;;
-	configure)vi $PHOME/paradise.cfg;;		
-	*)	  $QHOME/l32/q $PHOME/rrc.q -port $PORT -cmd "paradise\"$CMD\"" -q;;
+	start)		$PHOME/start.sh;;
+	stop)		$PHOME/stop.sh;;
+	restart)	$PHOME/stop.sh && sleep 1 && $PHOME/start.sh;;
+	configure)	vi $PHOME/paradise.cfg;;		
+	*)		$QHOME/l32/q $PHOME/rrc.q -port $PORT -cmd "paradise\"$CMD\"" -q;;
 esac
