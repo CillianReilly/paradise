@@ -47,6 +47,8 @@ utl.checkResults:{
 	if[not utl.dbg;exit not pass]
 	}
 
+utl.testFile:{utl.true[-11=type key x;"File not found: ",1_string x]}
+
 utl.testVars:{
         k:key[x]except`;
         utl.true[k~y;string[x]," variable(s) not defined: ",", "sv string utl.compVars[k;y]]
