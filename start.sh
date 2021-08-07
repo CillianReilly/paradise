@@ -17,5 +17,5 @@ if [ $MIC ];then
 	$QHOME/l32/q $PHOME/mic.q -port $PORT -cli $CLI 2>&1 >$PHOME/logs/mic.log &
 fi
 
-echo "Started"
+echo "Paradise processes started"
 exit 0
