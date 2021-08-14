@@ -15,6 +15,7 @@ cfg.cmd:(!). flip(
 	("shuffle";`.nlp.spt.shuffle);
 	("queue";`.nlp.spt.queue);
 	("radio";`.nlp.spt.radio);
+	("repeat";`.nlp.spt.repeat);
 	("weather";(!). flip(
 			("on";`.nlp.wx.getWxByDay);
 			("tomorrow";`.nlp.wx.getWxTmrw);
@@ -79,6 +80,11 @@ spt.rand:{r:.spt.put.rand[];if[not"Success"~r;:r];system"sleep 2";spt.playing[]}
 spt.shuffle:{
 	if[x~enlist"shuffle";:"Shuffle is ",("off";"on").spt.get.shuffle[]];
 	.spt.put.shuffle x 2+x?"shuffle"
+	}
+
+spt.repeat:{
+	d:("song";"track";"album";"playlist";"off")!("track";"track";"context";"context";"off");
+	.spt.put.repeat raze d x inter key d
 	}
 
 spt.getSearchTerms:{
