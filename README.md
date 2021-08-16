@@ -12,7 +12,7 @@ Specify PHOME in your .bashrc or equivalent
 
 ##### Requirements
 * kdb+ 3.5+ https://code.kx.com/q
-* Scripts from the qtools repository: github.com/CillianReilly/qtools
+* Scripts from the qtools repository: https://github.com/CillianReilly/qtools 
 * Python 3.5+ https://www.python.org
 * embedPy: https://code.kx.com/q/ml/embedpy
 * gTTS https://pypi.org/project/gTTS
