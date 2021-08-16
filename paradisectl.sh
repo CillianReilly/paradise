@@ -3,7 +3,7 @@
 PORT=$(grep PORT $PHOME/paradise.cfg | cut -d "=" -f2)
 
 if [ $# -eq 0 ];then
-	rlwrap -r $QHOME/l32/q $PHOME/rpl.q -port $PORT
+	rlwrap -r $QHOME/l32/q rpl.q -port $PORT
 	exit 0
 fi
 
@@ -18,5 +18,5 @@ case $CMD in
 	stop)		$PHOME/stop.sh;;
 	restart)	$PHOME/stop.sh && sleep 1 && $PHOME/start.sh;;
 	configure)	vi $PHOME/paradise.cfg;;		
-	*)		$QHOME/l32/q $PHOME/rrc.q -port $PORT -cmd "paradise\"$CMD\"" -q;;
+	*)		$QHOME/l32/q rrc.q -port $PORT -cmd "paradise\"$CMD\"" -q;;
 esac
