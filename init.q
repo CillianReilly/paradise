@@ -4,8 +4,9 @@ gbl.date:.z.d
 gbl.timer:{
 	//Runs every minute
 	.spt.utl.checkToken[];
+	.wifi.utl.updDevices[];
 	//Runs every 5 minutes
-	if[0=(`minute$x)mod 5;.wifi.utl.updDevices[]];
+	if[0=(`minute$x)mod 5;.wifi.utl.getNmap[]];
 	//Runs once a day
 	if[.z.d<>gbl.date;.cal.utl.sendRmd 0`reminders;gbl.date:.z.d]
 	}
