@@ -3,8 +3,10 @@ import gtts
 import speech_recognition as sr
 
 def loadMic():
+	global recognizer
 	recognizer=sr.Recognizer()
 	try:
+		global microphone
 		microphone=sr.Microphone()
 		return 0
 	except:
