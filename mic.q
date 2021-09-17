@@ -15,6 +15,7 @@ run:{
 	}
 
 init:{
+	.log.out"Starting mic";
 	h:@[hopen;x;{.log.err"Couldn't connect to Paradise, exiting...";exit 1}];
 	if[1=loadMic[]`;.log.err"Mic not available: either not connected or already in use";exit 1];	
 	
@@ -23,5 +24,4 @@ init:{
 	while[1b;@[run;h;{.log.err"Error running: ",x}]]
 	}
 
-.log.out"Starting mic"
 init[paradise]
