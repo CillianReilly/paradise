@@ -9,9 +9,9 @@ speak:.p.get`speak
 
 run:{
 	text:mic[];
-	$[10=type text;
-		.log.out text;
-		speak x(`.nlp.utl.main;text`)]
+	if[10=type text;.log.out text;:()];
+	.log.out text`;
+	speak x(`.nlp.utl.main;text`)
 	}
 
 init:{
