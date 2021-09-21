@@ -38,7 +38,7 @@ utl.getDevices:{
 	if[not count nmap;.log.err"Couldn't read nmap results";:()];	
 
 	mac:nmap where nmap like"MAC Address*";
-	if[not count mac;.log.err"Couldn't find any MAC addresses";:()];
+	if[not count mac;.log.err"Couldn't find any MAC addresses in nmap results";:()];
 
 	mac:utl[`parseMAC`parseBrkt`parseItem]@\:/:mac;
 	mac:update lastActive:.z.p from flip`MAC`name`item!flip mac;
@@ -56,7 +56,7 @@ utl.logOld:{
 	}
 
 utl.updDevices:{
-	dcv:utl.getDevices[];
+	dcv:utl.getDevices[];if[not count dcv;:()];
 
 	new:exec MAC from dcv;
 	old:exec MAC from cfg.devices where not MAC in new,1<`minute$.z.p-lastActive;	
