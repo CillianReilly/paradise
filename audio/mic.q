@@ -1,5 +1,5 @@
 \l p.q
-\l mic.p
+\l audio/mic.p
 \l logs/log.q
 
 paradise:first"J"$.Q.opt[.z.x]`port
@@ -11,7 +11,8 @@ run:{
 	text:mic[];
 	if[10=type text;.log.out text;:()];
 	.log.out text`;
-	speak x(`.nlp.utl.main;text`)
+	.log.out r:x(`.nlp.utl.main;text`);
+	speak r
 	}
 
 init:{
