@@ -24,4 +24,4 @@ def mic():
 def speak(text):
 	s=gtts.gTTS(text)
 	s.save("speech.wav")
-	os.system("omxplayer --no-keys speech.wav >/dev/null 2>&1")
+	os.system("[ $(grep SPEECH $PHOME/paradise.cfg | cut -d \"=\" -f2 ) -eq 1 ] && omxplayer --no-keys speech.wav >/dev/null 2>&1")
