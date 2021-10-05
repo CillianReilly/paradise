@@ -20,7 +20,7 @@ Specify PHOME in your .bashrc or equivalent
 * ngrok https://ngrok.com 
 ##### Calendar
 * Add reminders to calendar/reminders.csv
-* Freq is either Y(early), M(onthly), W(eekly) or O(once off)
+* Freq is either Y(early), M(onthly), W(eekly) or O(nce off)
 ##### Spotify
 * Docs: https://developer.spotify.com/documentation/web-api
 * IDs available at: https://developer.spotify.com/dashboard/login
