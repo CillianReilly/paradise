@@ -9,13 +9,15 @@ utl.rmToDo:{x 0: y where not all each y like/:\:{"*",x,"*"}each" "vs z;utl.loadT
 utl.reminders:`:calendar/reminders.csv
 utl.loadRmds:{0(set;`reminders;)("ds*";enlist",")0:x;}
 
-utl.comp:{[fc;f;dc;d](fc in f)&{(x$/:y)~\:x$z}[;dc;d]$[f in`Y;`mm`dd;f in`M;`dd;`date]}
+utl.comp:{[fc;f;dc;d](fc in f)&{(x@/:y)~\:x z}[;dc;d]$[f in`Y;`mm`dd$;f in`M;`dd$;f in`W;mod[;7];`date$]}
 utl.yearlyComp:utl.comp[;`Y;;]
+utl.weeklyComp:utl.comp[;`W;;]
 utl.monthlyComp:utl.comp[;`M;;]
 utl.onceOffComp:utl.comp[;`O;;]
 
 utl.sel:{?[x;enlist(y;`freq;`date;.z.d);0b;()]}
 utl.getYearly:utl.sel[;utl.yearlyComp]
+utl.getWeekly:utl.sel[;utl.weeklyComp]
 utl.getMonthly:utl.sel[;utl.monthlyComp]
 utl.getOnceOff:utl.sel[;utl.onceOffComp]
 utl.fmt:{enlist", "sv" "sv/:flip x}
@@ -30,7 +32,7 @@ utl.delOnceOff:{
 	utl.loadRmds x
 	}
 
-utl.getRmds:{raze utl[`getOnceOff`getMonthly`getYearly]@\:x}
+utl.getRmds:{raze utl[`getOnceOff`getWeekly`getMonthly`getYearly]@\:x}
 utl.fmtRmds:{
 	yrs:update years:string(-/)`year$(.z.d;date)from select from x where freq in`Y;
 	n:x except enlist[`years]_yrs;
