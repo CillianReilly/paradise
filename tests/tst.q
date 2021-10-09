@@ -10,7 +10,7 @@ utl.true:{
 	x
 	}
 utl.logTestInfo:{.log.out"Running ",string[x]," unit test(s)..."}
-utl.nsFuncs:{x where 100=('[type;value])each x:` sv'x,'1_key x}
+utl.nsFuncs:{x where 100=('[type;value])each x:` sv'x,'1_key[x]except`setUp`tearDown}
 utl.testDic:{x!count[x]#0b}
 utl.createTests:{y set utl.testDic utl.nsFuncs x}
 utl.runTests:{x set f!utl.pex each f:key x}
@@ -30,8 +30,10 @@ utl.loadTests:{
 utl.test:{
 	t:` sv x,`tests;
 	utl.createTests[x;t];
+	if[`setUp in key x;x[`setUp][]];
 	utl.logTestInfo each(x;count value t);
 	utl.runTests t;
+	if[`tearDown in key x;x[`tearDown][]];
 	utl.true[all value t;"Failing ",string[x]," tests: ",", "sv string where not value t];
 	.log.out"Finished runnning ",string[x]," tests"
 	}
