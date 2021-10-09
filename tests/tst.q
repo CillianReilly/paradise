@@ -44,7 +44,7 @@ utl.checkResults:{
 		.log.out"All unit tests passing";
 		.log.err"Number of failed tests: ",string 2 sum/not results
 	];
-	if[not utl.dbg;exit not pass]
+	pass
 	}
 
 utl.testFile:{utl.true[-11=type key x;"File not found: ",1_string x]}
@@ -75,7 +75,8 @@ utl.init:{
 	modules:key[`.tst]except``utl;
 	.log.out"Starting unit tests...";
 	utl.test each modules;
-	utl.checkResults modules
+	result:utl.checkResults modules;
+	if[not utl.dbg;exit not result]
 	}
 
 utl.init[]
