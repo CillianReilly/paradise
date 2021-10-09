@@ -25,3 +25,5 @@ c:@[.utl.con.chk;[];0]
 -1"Internet connection",$[200=c;"";" not"]," ok: response code was ",string c;
 
 .wifi.cfg.devices:.wifi.utl.getDevices[]
+
+if[ML;.ml.par.init[2000;0.001]]
