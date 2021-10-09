@@ -24,6 +24,7 @@ cfg.cmd:(!). flip(
 	("connection";`.nlp.utl.con);
 	("connected";`.nlp.utl.con);
 	("status";`.nlp.utl.con);
+	("uptime";`.nlp.utl.uptime);
 	("home";`.nlp.wifi.devices);
 	("who";`.nlp.wlf.query);
 	("what";`.nlp.wlf.query);
@@ -180,6 +181,8 @@ wx.getWxByDay:{
 	}
 
 utl.con:{c:.utl.con.chk[];$[c=200;"Internet connection ok";"Not connected, response code was ",string c]}
+
+utl.uptime:{"Uptime: ",string .z.p-.par.gbl.uptime}
 
 wlf.query:{.wlf.get.short raze x}
 

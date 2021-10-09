@@ -11,6 +11,8 @@ gbl.timer:{
 	if[.z.d<>gbl.date;.cal.utl.sendRmd 0`reminders;gbl.date:.z.d]
 	}
 
+gbl.uptime:.z.p
+
 \d .
 
 .z.pp:.twl.pst.callback
