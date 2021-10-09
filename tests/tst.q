@@ -30,8 +30,7 @@ utl.loadTests:{
 utl.test:{
 	t:` sv x,`tests;
 	utl.createTests[x;t];
-	utl.logTestInfo x;
-	utl.logTestInfo count value t;
+	utl.logTestInfo each(x;count value t);
 	utl.runTests t;
 	utl.true[all value t;"Failing ",string[x]," tests: ",", "sv string where not value t];
 	.log.out"Finished runnning ",string[x]," tests"
