@@ -104,12 +104,11 @@ spt.playing:{
 spt.vol:{
 	vol:.spt.get.vol[];
 	if[-9h<>type vol;:vol];
-	if[x~enlist"volume";:"Volume is at ",string[vol]," percent"];
 	vol:$[any a:all each x in .Q.n;
 		first x where a;
 	      count c:first("up";"down")inter x;
 		100&7h$vol*(("up";"down")!2 0.5)c;
-		vol];
+		:"Volume is at ",string[vol]," percent"];
 	.spt.put.vol vol
 	}
 
