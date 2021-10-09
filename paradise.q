@@ -15,6 +15,4 @@ ML:1^first"J"$.Q.opt[.z.x]`ml
 \l init.q
 
 paradise:.nlp.utl.main
-
-if[ML;.ml.par.init[2000;0.001]]
 .log.out"Paradise start up complete" 
