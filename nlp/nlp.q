@@ -115,7 +115,9 @@ spt.vol:{
 
 spt.transfer:{
 	dvc:.spt.get.devices[];if[()~dvc;:"No available devices"];
-	trg:2{reverse x,"*"}/x 2+x?"to";
+	trg:x 2+x?"to";
+	if[trg~"";:"No target device specified"];
+	trg:2{reverse x,"*"}/trg;
 	id:?[dvc;enlist(like;(lower;`type);trg);();(first;`id)];
 	if[not count id;:"Couldn't find device ID"];
 	if[id~exec first id from dvc where is_active;:"Success"];
