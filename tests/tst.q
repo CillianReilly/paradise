@@ -1,5 +1,5 @@
 // Generic unit test framework
-\l logs/log.q
+\l log.q
 \d .tst
 
 utl.dbg:`dbg in key .Q.opt .z.X
