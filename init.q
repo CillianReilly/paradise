@@ -11,6 +11,11 @@ gbl.timer:{
 	if[.z.d<>gbl.date;.cal.utl.sendRmd 0`reminders;gbl.date:.z.d]
 	}
 
+gbl.status:{
+	c:@[.utl.con.chk;[];0];
+	-1"Internet connection",$[200=c;"";" not"]," ok: response code was ",string c;	
+	}
+
 gbl.uptime:.z.p
 
 \d .
@@ -21,9 +26,7 @@ system"t 60000"
 system"S ",string 7h$.z.t
 \x .z.ph
 
-c:@[.utl.con.chk;[];0]
--1"Internet connection",$[200=c;"";" not"]," ok: response code was ",string c;
-
+.par.gbl.status[]
 .wifi.cfg.devices:.wifi.utl.getDevices[]
 
 if[ML;.ml.par.init[2000;0.001]]
