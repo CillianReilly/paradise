@@ -4,6 +4,7 @@ cfg.cmd:(!). flip(
 	("pause";`.spt.put.pause);
 	("resume";`.spt.put.resume);
 	("devices";`.nlp.spt.devices);
+	("activate";`.nlp.spt.activate);
 	("volume";`.nlp.spt.vol);
 	("random";`.nlp.spt.rand);
 	("surprise";`.nlp.spt.rand);
@@ -140,6 +141,13 @@ spt.devices:{
 	f:{$[x;" "sv(", "sv y`type;$[x=1;"is";"are"];"currently";z);""]};
 	o:f'[count each(a;r);(a;r);("active";"available")];
 	", "sv o where not 0=count each o
+	}
+
+spt.activate:{
+	dvc:.spt.get.devices[];if[()~dvc;:"No available devices"];
+	id:exec first id from dvc;
+	if[id in exec id from dvc where is_active;:"Success"];
+	.spt.put.transfer id
 	}
 
 spt.createPlaylist:{
