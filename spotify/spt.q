@@ -26,7 +26,7 @@ get.req:{utl.parseResponse get.sendReq x}
 get.sendReq:{[ep]cfg.url"GET ",(1_string[cfg.url],ep)," HTTP/1.0\r\nAuthorization: Bearer ",cfg.accessToken,"\r\n\r\n"}
 
 get.info:{get.req"/v1/me/player"}
-get.vol:{@[get.info[].;`device`volume_percent;"Error, could not find active device"]}
+get.vol:{@[get.info[].;`device`volume_percent;"No active device found"]}
 get.shuffle:{@[get.info[]@;`shuffle_state;"Error, could not find active device"]}
 get.devices:{r:get.req"/v1/me/player/devices";$[10=type r;r;r`devices]}
 get.playing:{get.req"/v1/me/player/currently-playing"}
