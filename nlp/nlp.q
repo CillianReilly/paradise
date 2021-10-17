@@ -146,7 +146,7 @@ spt.devices:{
 spt.activate:{
 	dvc:.spt.get.devices[];if[()~dvc;:"No available devices"];
 	id:exec first id from dvc;
-	if[id in exec id from dvc where is_active;:"Success"];
+	if[id~exec first id from dvc where is_active;:"Success"];
 	.spt.put.transfer id
 	}
 
