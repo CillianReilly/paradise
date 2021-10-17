@@ -20,13 +20,13 @@ gbl.uptime:.z.p
 
 \d .
 
-.z.pp:.twl.pst.callback
-.z.ts:.par.gbl.timer
-system"t 60000"
-system"S ",string 7h$.z.t
-\x .z.ph
-
 .par.gbl.status[];
 .wifi.cfg.devices:.wifi.utl.getDevices[]
 
 if[ML;.ml.par.init[2000;0.001]]
+
+\x .z.ph
+.z.pp:.twl.pst.callback
+.z.ts:.par.gbl.timer
+system"S ",string 7h$.z.t
+system"t 60000"
