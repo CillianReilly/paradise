@@ -13,7 +13,7 @@ gbl.timer:{
 
 gbl.status:{
 	c:@[.utl.con.chk;[];0];
-	-1"Internet connection",$[200=c;"";" not"]," ok: response code was ",string c;	
+	0N!"Internet connection",$[200=c;"";" not"]," ok: response code was ",string c	
 	}
 
 gbl.uptime:.z.p
@@ -26,7 +26,7 @@ system"t 60000"
 system"S ",string 7h$.z.t
 \x .z.ph
 
-.par.gbl.status[]
+.par.gbl.status[];
 .wifi.cfg.devices:.wifi.utl.getDevices[]
 
 if[ML;.ml.par.init[2000;0.001]]
