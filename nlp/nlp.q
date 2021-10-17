@@ -22,9 +22,9 @@ cfg.cmd:(!). flip(
 			("tomorrow";`.nlp.wx.getWxTmrw);
 			("weather";`.nlp.wx.getWx)
 			));
-	("connection";`.nlp.utl.con);
-	("connected";`.nlp.utl.con);
-	("status";`.nlp.utl.con);
+	("connection";`.par.gbl.status);
+	("connected";`.par.gbl.status);
+	("status";`.par.gbl.status);
 	("uptime";`.nlp.utl.uptime);
 	("home";`.nlp.wifi.devices);
 	("who";`.nlp.wlf.query);
@@ -189,8 +189,6 @@ wx.getWxByDay:{
 	r:.wx.utl.getWx raze(2+x?"in")_utl.remove[x;("on";d)];if[10=type r;:r];
 	wx.getForecast[d;]r[`daily;`data]1+((.z.d mod 7)rotate utl.days)?d
 	}
-
-utl.con:{c:.utl.con.chk[];$[c=200;"Internet connection ok";"Not connected, response code was ",string c]}
 
 utl.uptime:{"Uptime: ",string .z.p-.par.gbl.uptime}
 
