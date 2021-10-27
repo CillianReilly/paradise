@@ -18,7 +18,7 @@ case $CMD in
 	stop)		$PHOME/stop.sh;;
 	restart)	$PHOME/stop.sh && sleep 1 && $PHOME/start.sh;;
 	configure)	vi $PHOME/paradise.cfg;;		
-	*)		if [[ ! "q)" = ${CMD:0:2} ]]
+	*)		if [[ ! "q)" == ${CMD:0:2} ]]
 				then CMD="paradise\"$CMD\""
 			fi
 			$QHOME/l32/q rrc.q :$PORT -cmd "$CMD" -q;;
