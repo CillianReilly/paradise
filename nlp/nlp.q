@@ -107,9 +107,11 @@ spt.vol:{
 	vol:.spt.get.vol[];
 	if[-9h<>type vol;:vol];
 	vol:$[any a:all each x in .Q.n;
-		first x where a;
+		$[count c:first(l:("plus";"add";"minus";"take"))inter x;
+		  vol+(l!1 1 -1 -1*"J"$first x where a)c;
+		  first x where a];
 	      count c:first("up";"down")inter x;
-		100&7h$vol*(("up";"down")!2 0.5)c;
+		100&7h$vol*(("up";"down")!2 0.5)c;		  
 		:"Volume is at ",string[vol]," percent"];
 	.spt.put.vol vol
 	}
