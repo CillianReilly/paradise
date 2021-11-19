@@ -2,7 +2,7 @@
 
 ML:1^first"J"$.Q.opt[.z.x]`ml
 
-\l logs/log.q
+\l log.q
 \l utils/utl.q
 \l spotify/spt.q
 \l twilio/twl.q
@@ -13,6 +13,7 @@ ML:1^first"J"$.Q.opt[.z.x]`ml
 \l ml/ml.q
 \l nlp/nlp.q
 \l init.q
+\l dev.q
 
 paradise:.nlp.utl.main
 .log.out"Paradise start up complete" 
