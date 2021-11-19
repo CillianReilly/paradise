@@ -8,6 +8,12 @@ utl.rmToDo:{x 0: y where not all each y like/:\:{"*",x,"*"}each" "vs z;utl.loadT
 
 utl.reminders:`:calendar/reminders.csv
 utl.loadRmds:{0(set;`reminders;)("ds*";enlist",")0:x;}
+utl.verifyRmds:{
+	t:any 0<count each first("   *";",")0:x;
+	if[t;.log.err"Found trailing commas in reminders.csv, not loading"];
+	t
+	}
+	
 
 utl.comp:{[fc;f;dc;d](fc in f)&{(x@/:y)~\:x z}[;dc;d]$[f in`Y;`mm`dd$;f in`M;`dd$;f in`W;mod[;7];`date$]}
 utl.yearlyComp:utl.comp[;`Y;;]
@@ -51,10 +57,11 @@ utl.sendRmd:{
 	}
 
 utl.init:{
+	if[utl.verifyRmds utl.reminders;:()];
 	utl.loadRmds utl.reminders;
 	utl.loadToDo utl.toDo
 	}
 	
-utl.init[]
+utl.init[];
 
 \d .
