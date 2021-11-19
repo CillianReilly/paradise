@@ -1,6 +1,6 @@
 \l p.q
 \l audio/mic.p
-\l logs/log.q
+\l log.q
 
 paradise:first"J"$.Q.opt[.z.x]`port
 loadMic:.p.get`loadMic
