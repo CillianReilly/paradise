@@ -25,7 +25,7 @@ gbl.uptime:.z.p
 
 if[ML;.ml.par.init[2000;0.001]]
 
-\x .z.ph
+.z.ph:{}
 .z.pp:.twl.pst.callback
 .z.ts:.par.gbl.timer
 system"S ",string 7h$.z.t
