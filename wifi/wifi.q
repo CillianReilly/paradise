@@ -12,10 +12,10 @@ utl.nmap:{
 	}
 
 utl.ifc:{
-	cmd:"ifconfig | grep wlan0 -A 1 | grep netmask";
-	ifc:@[system;cmd;{enlist"Error running ifconfig: ",x}];
-	if[first[ifc]like"Error*";.log.err first ifc;:()];
-	(!). flip" "vs/:"  "vs trim first ifc
+	cmd:"ifconfig | grep ",/:("wlan0";"eth0"),\:" -A 1 | grep netmask";
+	ifc:@[system;;{enlist"Error running ifconfig: ",x}]each cmd;
+	if[2 all/ifc like\:"Error*";.log.err each ifc;:()];
+	(!). flip" "vs/:"  "vs trim 2 first/ifc where not raze ifc like\:"Error*"
 	}
 
 utl.getNmap:{
