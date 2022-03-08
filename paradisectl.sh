@@ -13,11 +13,12 @@ else
 	CMD=$@
 fi
 
+cd $PHOME
 case $CMD in
-	start)		$PHOME/start.sh;;
-	stop)		$PHOME/stop.sh;;
-	restart)	$PHOME/stop.sh && sleep 1 && $PHOME/start.sh;;
-	configure)	vi $PHOME/paradise.cfg;;		
+	start)		./start.sh;;
+	stop)		./stop.sh;;
+	restart)	./stop.sh && sleep 1 && ./start.sh;;
+	configure)	vi paradise.cfg;;		
 	*)		if [[ ! "q)" == ${CMD:0:2} ]]
 				then CMD="paradise\"$CMD\""
 			fi
