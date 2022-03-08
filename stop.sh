@@ -1,5 +1,11 @@
 #!/bin/bash
 
+read -p "Are you sure you want to restart Paradise? Enter Y to proceed: " SHUTDOWN
+if [[ ! "$SHUTDOWN" == [Yy] ]];then
+	echo "Shutdown not confirmed, attempt aborted"
+	exit 1
+fi
+
 echo "Setting environment variables from paradise.cfg..."
 PORT=$(grep PORT $PHOME/paradise.cfg | cut -d "=" -f2)
 
