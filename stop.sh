@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p "Are you sure you want to restart Paradise? Enter Y to proceed: " SHUTDOWN
+read -p "Are you sure you want to shutdown Paradise? Enter Y to proceed: " SHUTDOWN
 if [[ ! "$SHUTDOWN" == [Yy] ]];then
 	echo "Shutdown not confirmed, attempt aborted"
 	exit 1
