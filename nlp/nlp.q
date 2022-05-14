@@ -90,7 +90,7 @@ spt.repeat:{
 	}
 
 spt.getSearchTerms:{
-	x:ssr/[raze x;(" by ";y," ");(" ";"")];
+	x:ssr/[raze x;("song";" by ";y," ");("track";" ";"")];
 	t:("album";"artist";"playlist";"track");
 	x:{@[x;count[y]+x ss y;:;":"]}/[x;t];
 	t:(x?":")#x;
