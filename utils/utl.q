@@ -28,8 +28,4 @@ http.parseRP:(!).("S*";"=")0:"&"vs
 http.genParamStr:{"&"sv"="sv/:flip{@[x;where -10=type each x;1#]}each(key;value)@\:where[0<>count each x]#x}
 http.genEncParamStr:http.enc http.genParamStr@
 
-con.url:`:https://www.howsmyssl.com
-con.req:http.get[con.url;]"/a/check"@
-con.chk:http.parseRC con.req@
-
 \d .
