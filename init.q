@@ -11,8 +11,9 @@ gbl.timer:{
 	if[.z.d<>gbl.date;.cal.utl.sendRmd 0`reminders;gbl.date:.z.d]
 	}
 
+gbl.getStatus:{.utl.http.parseRC .utl.http.get[`:https://www.howsmyssl.com;"/a/check"]}
 gbl.status:{
-	c:@[.utl.con.chk;[];0];
+	c:@[gbl.getStatus;[];0];
 	0N!"Internet connection",$[200=c;"";" not"]," ok: response code was ",string c	
 	}
 
