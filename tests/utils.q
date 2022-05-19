@@ -1,4 +1,4 @@
-\l utils/utl.q
+\l utl.q
 
 \d .tst
 
