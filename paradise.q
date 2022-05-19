@@ -3,7 +3,7 @@
 ML:1^first"J"$.Q.opt[.z.x]`ml
 
 \l log.q
-\l utils/utl.q
+\l utl.q
 \l spotify/spt.q
 \l twilio/twl.q
 \l weather/wx.q
