@@ -15,7 +15,7 @@ gbl.getStatus:{.utl.http.parseRC .utl.http.get[`:https://www.howsmyssl.com;"/a/c
 gbl.status:{
 	c:@[gbl.getStatus;[];0];
 	s:"Internet connection",$[200=c;"";" not"]," ok: response code was ",string c;
-	-1 s;s
+	.log.out s;s
 	}
 
 gbl.uptime:.z.p
