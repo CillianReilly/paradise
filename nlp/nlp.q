@@ -193,7 +193,7 @@ wx.getWxByDay:{
 	wx.getForecast[d;]r[`daily;`data]1+((.z.d mod 7)rotate utl.days)?d
 	}
 
-utl.uptime:{"Uptime: ",string .z.p-.par.gbl.uptime}
+utl.uptime:{"Uptime: ",string .z.p-.par.gbl.startTime}
 
 wlf.query:{.wlf.get.short raze x}
 
