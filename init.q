@@ -18,7 +18,7 @@ gbl.status:{
 	.log.out s;s
 	}
 
-gbl.uptime:.z.p
+gbl.startTime:.z.p
 
 \d .
 
