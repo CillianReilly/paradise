@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+DIR=$(pwd)
 BRANCH=newBranch
 while getopts "mt" opt;do
 	case $opt in
@@ -12,7 +13,7 @@ shift $((OPTIND-1))
 
 if [ ! $# -ge 1 ];then echo "Enter at least one file";exit 1;fi
 for i in $@;
-	do if [ ! -f ~/code/paradise/$i ];then echo "$i is not a file";exit 1;fi
+	do if [ ! -f $DIR/$i ];then echo "$i is not a file";exit 1;fi
 done
 
 if [ ! -z $TEST ];then
@@ -25,7 +26,7 @@ if [ ! -z $TEST ];then
 fi
 
 echo "Starting commit"
-cd ~/git/creilly/paradise
+cd $DIR/git
 git checkout master
 git pull
 if [ $BRANCH == master ];then
@@ -40,7 +41,7 @@ else
 fi
 
 for i in $@;
-	do cp ~/code/paradise/$i ~/git/creilly/paradise/$i
+	do cp $DIR/$i .
 done
 git diff *
 
