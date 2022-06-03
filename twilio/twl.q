@@ -16,7 +16,7 @@ pst.text:pst.req["/2010-04-01/Accounts/",cfg.sID,"/Messages.json";]
 pst.callback:{
 	b:.utl.http.dec .utl.http.parseRP[x 0]`Body;
 	r:$["q)"~2#b;.Q.s1 value b;.nlp.utl.main b];
-	r:utl.genTwiML r;
+	r:utl.genTwiML ssr[r;" & ";" and "];
 	utl.genRes r
 	}
 
