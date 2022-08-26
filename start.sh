@@ -10,7 +10,7 @@ echo "Starting paradise..."
 $QHOME/l32/q $PHOME/paradise.q -p $PORT -cli $CLI -ml $ML 2>&1 >$PHOME/logs/paradise.log &
 
 echo "Starting ngrok server..."
-$NGROK_HOME/ngrok http -subdomain=paradise $PORT 2>&1 >/dev/null &
+$NGROK_HOME/ngrok http --region=us --hostname=paradise.ngrok.io $PORT 2>&1 >/dev/null &
 
 if [ $MIC ];then
 	echo "Starting mic..."
