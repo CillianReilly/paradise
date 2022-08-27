@@ -17,6 +17,7 @@ cd $PHOME
 case $CMD in
 	start)		./start.sh;;
 	stop)		./stop.sh;;
+	shutdown)	./stop.sh;;
 	restart)	./stop.sh && sleep 1 && ./start.sh;;
 	configure)	vi paradise.cfg;;		
 	*)		if [[ ! "q)" == ${CMD:0:2} ]]
