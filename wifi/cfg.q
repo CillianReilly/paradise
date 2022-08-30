@@ -1,5 +1,5 @@
 //Fill in known MAC address dictionary
 cfg:(!). flip(
-	(`devices;([]MAC:`symbol$();name:();item:()));
+	(`devices;1!flip`MAC`name`item`lastActive!"S**P"$\:());
 	(`knownMAC;()!())
 	)
