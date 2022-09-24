@@ -8,7 +8,7 @@ utl.genFullParamStr:.utl.http.genEncParamStr utl.genFullParamDict@
 utl.genShortParamStr:.utl.http.genEncParamStr utl.genShortParamDict@
 utl.parseResponse:{utl.codes[.utl.http.parseRC x]x}
 
-get.sendReq:.utl.http.get[cfg.url;]
+get.sendReq:.utl.http.get[cfg.url;;""]
 get.req:utl.parseResponse get.sendReq@
 get.short:get.req"/v1/result?",utl.genShortParamStr@
 get.spoken:get.req"/v1/spoken?",utl.genShortParamStr@
