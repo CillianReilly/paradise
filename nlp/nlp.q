@@ -1,6 +1,7 @@
 \d .nlp
 
 cfg.cmd:(!). flip(
+	("bus";`.nlp.sgt.nextBus);
 	("pause";`.spt.put.pause);
 	("resume";`.spt.put.resume);
 	("devices";`.nlp.spt.devices);
@@ -202,5 +203,10 @@ wifi.devices:{
 	if[not count i;:"No devices connected"];
 	"Connected devices: ",", "sv i
 	}
-	
+
+sgt.nextBus:{
+	t:"P"$2 sublist .sgt.get.nextBus["10519";"65"]`EstimatedArrival;
+	{"The next 65 bus is due in ",x," minutes, subsequent bus due in ",y, " minutes"}. string`mm$t-.z.p+0D08:00
+	}
+
 \d .
