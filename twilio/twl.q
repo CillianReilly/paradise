@@ -1,6 +1,8 @@
 \d .twl
 \l twilio/cfg.q
 
+cfg.auth:.utl.enc.base64 ":" sv cfg`sID`token
+
 utl.genBodyDict:("Body";"From";"To")!(;cfg.from;cfg.to)@
 utl.genBody:.utl.http.genEncParamStr utl.genBodyDict@
 utl.genReqDict:("Authorization: Basic ";"Content-Length: ";"Content-Type: ")!(cfg.auth;;"application/x-www-form-urlencoded")@
