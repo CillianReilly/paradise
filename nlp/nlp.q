@@ -205,8 +205,10 @@ wifi.devices:{
 	}
 
 sgt.nextBus:{
-	t:"P"$2 sublist .sgt.get.nextBus["10519";"65"]`EstimatedArrival;
-	{"The next 65 bus is due in ",x," minutes, subsequent bus due in ",y, " minutes"}. string`mm$t-.z.p+0D08:00
+	bus:x first where all each x in .Q.n;if[bus~"";bus:"65"];
+	stopID:(("65";"51")!("10519";"10241"))bus;if[stopID~"";:"No route for bus ",bus];
+	t:string`mm$neg[.z.p+0D08:00]+"P"$2 sublist .sgt.get.nextBus[stopID;bus]`EstimatedArrival;
+	"The next ",bus," bus is due in ",t[0]," minutes",$[2=count t;", subsequent bus due in ",t[1]," minutes";""]
 	}
 
 \d .
