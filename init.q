@@ -18,6 +18,7 @@ gbl.status:{
 	.log.out s;s
 	}
 
+gbl.fromAddr:"paradise@cillianreilly.com"
 gbl.startTime:.z.p
 
 \d .
