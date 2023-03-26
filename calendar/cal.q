@@ -53,7 +53,7 @@ utl.sendRmd:{
 	r:utl.rmds x;
 	utl.delOnceOff utl.reminders;
 	if[not count r;:"No reminders today"];
-	.email.send["cillianreilly@yahoo.com";.par.gbl.fromAddr;"Reminders for ",string .z.d;r];
+	.email.send["cillianreilly@yahoo.com";"paradise";"Reminders for ",string .z.d;r];
 	.twl.pst.text r
 	}
 
