@@ -42,7 +42,7 @@ utl.getRmds:{raze utl[`getOnceOff`getWeekly`getMonthly`getYearly]@\:x}
 utl.fmtRmds:{
 	yrs:update years:string(-/)`year$(.z.d;date)from select from x where freq in`Y;
 	n:x except enlist[`years]_yrs;
-	r:enlist"Reminder: ";
+	r:enlist"";
 	if[count yrs;r:r,utl.fmt yrs`reminder`years];
 	if[count n;r:r,enlist", "sv n`reminder];
 	first[r],", "sv 1_r
@@ -53,6 +53,7 @@ utl.sendRmd:{
 	r:utl.rmds x;
 	utl.delOnceOff utl.reminders;
 	if[not count r;:"No reminders today"];
+	.email.send["cillianreilly@yahoo.com";.par.gbl.fromAddr;"Reminders for ",string .z.d;r];
 	.twl.pst.text r
 	}
 
