@@ -53,8 +53,8 @@ utl.sendRmd:{
 	r:utl.rmds x;
 	utl.delOnceOff utl.reminders;
 	if[not count r;:"No reminders today"];
-	.email.send["cillianreilly@yahoo.com";"paradise";"Reminders for ",string .z.d;r];
-	.twl.pst.text r
+	r:.email.send["cillianreilly@yahoo.com";"paradise";"Reminders for ",string .z.d;r];
+	$[99h=type r`;"Success";"Error sending email"]
 	}
 
 utl.init:{

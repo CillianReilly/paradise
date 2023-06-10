@@ -28,7 +28,7 @@ gbl.startTime:.z.p
 if[ML;.ml.par.init[2000;0.001]]
 
 .z.ph:{}
-.z.pp:.twl.pst.callback
+.z.pp:{}
 .z.ts:.par.gbl.timer
 system"S ",string 7h$.z.t
 system"t 60000"
