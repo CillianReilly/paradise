@@ -17,7 +17,6 @@ Specify PHOME in your .bashrc or equivalent
 * embedPy: https://code.kx.com/q/ml/embedpy
 * gTTS https://pypi.org/project/gTTS
 * SpeechRecognition https://pypi.org/project/SpeechRecognition
-* ngrok https://ngrok.com 
 ##### Calendar
 * Add reminders to calendar/reminders.csv
 * Freq is either Y(early), M(onthly), W(eekly) or O(nce off)
