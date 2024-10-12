@@ -1,4 +1,6 @@
-//Contains user specific details
+// https://developer.spotify.com/documentation/web-api
+// Contains user specific details
+
 cfg:(!). flip(
 	(`userID;"");
 	(`ID;"");
